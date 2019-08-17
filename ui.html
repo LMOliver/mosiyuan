@@ -1,0 +1,834 @@
+<div>
+	<model-alert
+		v-if="showUpdate"
+		:title="translate(`膜拜{Siyuan} {0} {1}`,VERSION,translate(VERSION_NAME))"
+		:value="translate(`新增了时间感应，调整了整洁。\n修复了一些 bug。`)"></model-alert>
+	<h1 v-html="translate(`膜拜{Siyuan}`)"></h1>
+	<div>
+		<button style="float: right;" @click="()=>dailyMessage=DAILY_MESSAGES[Math.floor(Math.random()*DAILY_MESSAGES.length)]">{{translate(`换一个`)}}</button>
+		<p v-html="translate(dailyMessage)"></p>
+	</div>
+	<div class="area">
+		<h2 v-html="translate(`荒野`)"></h2>
+		<blockquote>
+			<p v-html="translate(`曾经，有一个高度发达的文明在这个星球上度过了它最为繁荣的时代。{!}在那时，人们相信{Siyuan}是最强的神，也是这个星球的科技、魔法与信仰三大学科体系高度发展的原因。`)"></p>
+			<p v-html="translate(`然而好景不长，曾被人们认为亘古不变的真理在一次失控的魔法实验之后支离破碎。{!}科技与魔法的支柱轰然倒塌，毁灭席卷了整个星球。`)"></p>
+			<p v-html="translate(`高楼变为废墟，法阵化作黄土，雕像碎成砂砾，但{Siyuan}并未抛弃这个文明——因为信仰仍在。`)"></p>
+		</blockquote>
+		<div class="col">
+			<h4 v-html="translate(`膜拜`)"></h4>
+			<div>
+				<div>
+					<span>{{translate(`您已膜拜{0}次`,pn(Math.floor(moValue)))}}</span>
+				</div>
+				<button @click="moSiyuan(1)" style="color:red" v-html="moDelta!==1?translate(`膜拜{Siyuan}{0}次`,pn(moDelta)):translate(`膜拜{Siyuan}`)"></button>
+				<span v-if="bookEffect>0">{{translate(`{0}点击/秒`,pn(bookEffect))}}</span>
+			</div>
+			<div v-if="moCount>=10">
+				<hr>
+				<button @click="buyAdvancedMo"
+				:disabled="!canBuyAdvancedMo">{{translate(`真诚膜拜{0} [{1}次膜拜]`,advancedMoLevel>0?' Lv.'+pn(advancedMoLevel):'',pn(advancedMoCost))}}</button>
+				<button v-if="techLevel('xuanxue')>=1"
+				@click="()=>{while(canBuyAdvancedMo)buyAdvancedMo();}"
+				:disabled="!canBuyAdvancedMo">{{translate(`最大`)}}</button>
+			</div>
+			<div v-if="advancedMoLevel>=10">
+				<hr>
+				<button @click="buyMoer"
+				:disabled="!canBuyMoer">{{translate(`${moers>0?'{0}位':''}信徒 [{1}次膜拜]`,pn(moers),pn(moerCost))}}</button>
+				<button v-if="techLevel('xuanxue')>=2"
+				@click="()=>{while(canBuyMoer)buyMoer();}"
+				:disabled="!canBuyMoer">{{translate(`最大`)}}</button>
+			</div>
+			<div v-if="advancedMoLevel>=20">
+				<hr>
+				<button @click="buyChurch"
+				:disabled="!canBuyChurch">{{translate(`${churchs>0?'{0}座':''}教堂 [{1}位信徒]`,pn(churchs),pn(churchCost))}}</button>
+				<button v-if="techLevel('xuanxue')>=6"
+				@click="buyChurchMax"
+				:disabled="!canBuyChurch&&!canBuyMoer">{{translate(`自动购买`)}}</button>
+			</div>
+		</div>
+		<div class="col" v-if="churchs>=5">
+			<h4 v-html="translate(`信仰`)"></h4>
+			<div>
+				<div>
+					<span>{{translate(`信仰:{0}`,pn(XY))}}</span>
+				</div>
+				<button @click="buyXY" :disabled="moValue&lt;=0">{{translate(`转化信仰 (+{0}信仰)`,pn(XYEarn))}}</button>
+			</div>
+			<div v-if="XY>=100||books>0">
+				<hr>
+				<button @click="buyBook"
+				:disabled="!canBuyBook">{{translate(`${books>0?'{0}卷':''}经书 [{1}信仰]`,pn(books),pn(bookCost))}}</button>
+				<button v-if="techLevel('xuanxue')>=1"
+				@click="()=>{while(canBuyBook)buyBook();}"
+				:disabled="!canBuyBook">{{translate(`最大`)}}</button>
+			</div>
+			<div v-if="books>0||sping||spLevel>0">
+				<hr>
+				<button v-if="sping" disabled="disabled">{{translate(`传教{0}`,pnr(spLevel))}}</button>
+				<button v-else @click="sp"
+				:disabled="books&lt;spCost">{{translate(`传教{0} [{1}本经书]`,pnr(spLevel),spCost)}}</button>
+				<hint-message :value="spMessage" :update="spMessageUpdate"></hint-message>
+				<div v-if="sping">
+					<span v-html="translate(SP_PROBLEMS[spingProblem.pid][0])"></span>
+					<button
+						v-for="(c,id) in spingProblem.chooses"
+						:disabled="c.selected"
+						@click="spAns(id)"
+						style="display: block;"
+						v-html="translate(PCtoString(spingProblem.pid,c))">
+					</button>
+				</div>
+			</div>
+			<div v-if="spLevel>0">
+				<div v-if="moers>=exploreNeed">
+					<hr>
+					<button @click="exploreTemple"
+					:disabled="XY<exploreTempleCost">{{translate(`探索遗迹 [{0}信仰]`,pn(exploreTempleCost))}}</button>	
+				</div>
+				<div v-else>
+					<hr>
+					{{translate(`探索下一个遗迹需要{0}位信徒`,pn(exploreNeed))}}
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="area" v-if="temple>0">
+		<h2 v-html="translate(`遗迹`)"></h2>
+		<strong>{{translate(`已发现{0}个遗迹`,pn(temple))}}</strong>
+		<blockquote>
+			<p v-html="translate(`过去的事物深埋于地下，而且数量稀少，发掘它们需要坚定的信仰。{!}尽管道路艰辛，但这是前进所必须的代价。{!}文明不进即退，而这残存的文明已经无路可退。`)"></p>
+			<p v-html="translate(`在遗迹中，人们惊喜地发现了向{Siyuan}祈求水晶的途径。{!}拥有了水晶，两扇大门便随着遗迹的探索徐徐开启……`)"></p>
+		</blockquote>
+		<div class="area">
+			<div class="area">
+				<div class="col">
+					<h4 v-html="translate(`遗迹大门`)"></h4>
+					<div>
+						<div>
+							<span>{{translate(`水晶:{0}`,pn(crystal))}}</span>
+						</div>
+						<button @click="pray"
+						:disabled="!canPray">{{translate(`祈求恩赐 [{0}次膜拜]`,pn(prayCost))}}</button>
+						<button v-if="techLevel('xuanxue')>=2"
+						@click="()=>{while(canPray)pray();}"
+						:disabled="!canPray">{{translate(`最大`)}}</button>
+					</div>
+					<div v-if="wisdomLevel>0||crystal>0">
+						<hr>
+						<button @click="wisdomUpgrade"
+						:disabled="!canUpgradeWisdom">{{translate(`智慧 Lv.{0} [{1}水晶]`,pn(wisdomLevel),wisdomUpgradeCost)}}</button>
+						<button v-if="techLevel('xuanxue')>=5"
+						@click="wisdomUpgradeMax"
+						:disabled="!canUpgradeWisdom&&!canPray">{{translate(`自动购买`)}}</button>
+					</div>
+					<div v-if="temple>=2&&(mysteryLevel>0||wisdomLevel>=1)">
+						<hr>
+						<button @click="mysteryUpgrade"
+						:disabled="!canUpgradeMystery">{{translate(`奥秘 Lv.{0} [{1}水晶]`,pn(mysteryLevel),mysteryUpgradeCost)}}</button>
+						<button v-if="techLevel('xuanxue')>=6"
+						@click="mysteryUpgradeMax"
+						:disabled="!canUpgradeMystery&&!canPray">{{translate(`自动购买`)}}</button>
+					</div>
+					<div v-if="temple>=3&&(natureLevel>0||mysteryLevel>=1)">
+						<hr>
+						<button @click="natureUpgrade"
+						:disabled="!canUpgradeNature">{{translate(`本质 Lv.{0} [{1}水晶]`,pn(natureLevel),natureUpgradeCost)}}</button>
+						<button v-if="techLevel('xuanxue')>=7"
+						@click="natureUpgradeMax"
+						:disabled="!canUpgradeNature&&!canPray">{{translate(`自动购买`)}}</button>
+					</div>
+				</div>
+				<div class="col" v-if="wisdomLevel>=5">
+					<h4 v-html="translate(`朝圣地`)"></h4>
+					<div>{{translate(`宝石:{0}`,pn(gem))}}</div>
+					<div>
+						<button @click="makeGem"
+						:disabled="makeGemEarn<1" >{{translate(`雕琢 (+{0}宝石)`,pn(makeGemEarn))}}</button>	
+					</div>
+					<div v-if="gem>0||altar>0">
+						<hr>
+						<div>{{translate(`神学:{0}`,pn(theology))}}</div>
+						<button @click="buyAltar"
+						:disabled="gem<altarCost">{{translate(`{0}座神坛 [{1}宝石]`,pn(altar),pn(altarCost))}}</button>
+					</div>
+					<div v-if="tech.hugeStoneBuilding>0">
+						<hr>
+						<button @click="buyHugeStone"
+						:disabled="!canBuyHugeStone">{{translate(`{0}块巨石 [{1}信仰]`,pn(hugeStone),pn(hugeStoneCost))}}</button>
+					</div>
+				</div>
+			</div>
+			<div class="area">
+				<div class="col" v-if="mysteryLevel>=5">
+					<h4 v-html="translate(`炼金区`)"></h4>
+					<div>{{translate(`魔法石:{0}`,pn(magicStone))}}</div>
+					<div>
+						<button @click="makeMagicStone"
+						:disabled="makeMagicStoneEarn&lt;1" >{{translate(`赋能 (+{0}魔法石)`,pn(makeMagicStoneEarn))}}</button>	
+					</div>
+					<div v-if="magicStone>0||magician>0">
+						<hr>
+						<div>{{translate(`魔力:{0}`,pn(magic))}}</div>
+						<button @click="buyMagician"
+						:disabled="magicStone&lt;magicianCost">{{translate(`{0}位魔法师 [{1}魔法石]`,pn(magician),pn(magicianCost))}}</button>
+					</div>
+					<div v-if="tech.fazhenBuilding>0">
+						<hr>
+						<button @click="buyFazhen"
+						:disabled="!canBuyFazhen">{{translate(`{0}座法阵 [{1}巨石]`,pn(fazhen),pn(fazhenCost))}}</button>
+					</div>
+				</div>
+				<div class="col" v-if="natureLevel>=5">
+					<h4 v-html="translate(`实验室`)"></h4>
+					<div>{{translate(`透镜:{0}`,pn(len))}}</div>
+					<button @click="makeLen"
+					:disabled="makeLenEarn&lt;1" >{{translate(`打磨 (+{0}透镜)`,pn(makeLenEarn))}}</button>		
+					<div v-if="len>0||scientist>0">
+						<hr>
+						<div>{{translate(`研究:{0}/{1}`,pn(science),pn(scienceLimit))}}</div>
+						<button @click="buyScientist"
+						:disabled="len&lt;scientistCost">{{translate(`{0}位科学家 [{1}透镜]`,pn(scientist),pn(scientistCost))}}</button>
+					</div>
+					<div v-if="tech.blessing>0">
+						<hr>
+						<button @click="buyKB"
+						:disabled="!canBuyKB">{{translate(`{0}本知识之书 [{1}座法阵]`,pn(knowledgeBook),pn(KBCost))}}</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="area" v-if="(temple>=5&&altar>=5&&magician>=5&&scientist>=5)||truthLevel>0">
+		<h2 v-html="translate(`城镇`)"></h2>
+		<blockquote>
+			<p v-html="translate(`在遗迹中的发现与收获振奋了信徒们。{!}愚昧逐渐远离，新的知识填充了信徒们的内心。`)"></p>
+			<p v-html="translate(`但新的挑战也已来临：天灾人祸随时可能发生。{!}只有居安思危，稳妥前行，才能防止在灾难发生时遭到重创。`)"></p>
+		</blockquote>
+		<div class="col">
+			<h4 v-html="translate(`真理之路`)"></h4>
+			<p v-if="truthLevel>0">
+				<strong>{{translate(`你已探索到真理{0}`,pnr(truthLevel))}}</strong>
+			</p>
+			<div v-if="hasUpgrade(truthLevel)">
+				<p>
+					<span v-html="translate(`正在追寻<strong>真理{0}</strong>`,pnr(truthLevel+1))"></span>
+					<span v-html="truthAbbrDescription(truthLevel)"></span>
+				</p>
+				<p>
+					{{translate(`阶段{0}/{1}，已进行{2}次尝试`,truthUpgradeStage,TRUTH_UPGRADES[truthLevel].stages,truthUpgradeAttempt)}}
+					<button @click="resetTruthUpgrade">{{translate(`重置`)}}</button>
+				</p>
+				<table v-if="truthUpgradeHistory.length>0" style="text-align:center;" class="ww">
+					<tbody>
+						<tr>
+							<th>{{translate(`编号`)}}</th>
+							<th>{{translate(`宝石`)}}</th>
+							<th>{{translate(`魔法石`)}}</th>
+							<th>{{translate(`透镜`)}}</th>
+							<th>{{translate(`结果`)}}</th>
+						</tr>
+						<tr v-for="(item,id) in truthUpgradeHistory">
+							<td>{{id+1}}</td>
+							<td>{{item.x}}</td>
+							<td>{{item.y}}</td>
+							<td>{{item.z}}</td>
+							<td>{{TRUTH_UPGRADES[truthLevel].message(item.r)}}</td>
+						</tr>
+					</tbody>
+				</table>
+				<hr>
+				<p v-if="truthUpgradeAttempt>=TRUTH_UPGRADES[truthLevel].attempts" class="danger">
+					{{translate(`尝试次数过多，消耗增加`)}}
+				</p>
+				<table class="ww">
+					<tbody>
+						<tr>
+							<th>{{translate(`材料`)}}</th>
+							<th colspan="2">{{translate(`数量({0}~{1})`,pn(TRUTH_UPGRADES[truthLevel].minCost),pn(TRUTH_UPGRADES[truthLevel].maxCost))}}</th>
+						</tr>
+						<tr class="truthupgrade">
+							<th :class="{needed:gem<gemChosen}">{{translate(`宝石`)}}</th>
+							<td>
+								<input type="range" :min="TRUTH_UPGRADES[truthLevel].minCost" :max="TRUTH_UPGRADES[truthLevel].maxCost" step="1" v-model.number="gemChosen">
+							</td>
+							<td>
+								<input type="number" :min="TRUTH_UPGRADES[truthLevel].minCost" :max="TRUTH_UPGRADES[truthLevel].maxCost" step="1" v-model.number="gemChosen">
+							</td>
+						</tr>
+						<tr class="truthupgrade">
+							<th :class="{needed:magicStone<magicStoneChosen}">{{translate(`魔法石`)}}</th>
+							<td>
+								<input type="range" :min="TRUTH_UPGRADES[truthLevel].minCost" :max="TRUTH_UPGRADES[truthLevel].maxCost" step="1" v-model.number="magicStoneChosen">
+							</td>
+							<td>
+								<input type="number" :min="TRUTH_UPGRADES[truthLevel].minCost" :max="TRUTH_UPGRADES[truthLevel].maxCost" step="1" v-model.number="magicStoneChosen">
+							</td>
+						</tr>
+						<tr class="truthupgrade">
+							<th :class="{needed:len<lenChosen}">{{translate(`透镜`)}}</th>
+							<td>
+								<input type="range" :min="TRUTH_UPGRADES[truthLevel].minCost" :max="TRUTH_UPGRADES[truthLevel].maxCost" step="1" v-model.number="lenChosen">
+							</td>
+							<td>
+								<input type="number" :min="TRUTH_UPGRADES[truthLevel].minCost" :max="TRUTH_UPGRADES[truthLevel].maxCost" step="1" v-model.number="lenChosen">
+							</td>
+						</tr>
+						<tr>
+							<th></th>
+							<th colspan="2">
+								{{translate(`本次消耗`)}}
+								<span v-if="truthUpgradeAttempt>=TRUTH_UPGRADES[truthLevel].attempts" class="danger">
+									{{translate(`(+{0})`,pn(truthUpgradeAttempt-TRUTH_UPGRADES[truthLevel].attempts+1))}}
+								</span>
+							</th>
+						</tr>
+						<tr>
+							<th :class="{needed:crystal<truthUpgradeCrystalCost}">{{translate(`水晶`)}}</th>
+							<td colspan="2">{{pn(truthUpgradeCrystalCost)}}</td>
+						</tr>
+						<tr>
+							<th :class="{needed:theology<truthUpgradeTheologyCost}">{{translate(`神学`)}}</th>
+							<td colspan="2">{{pn(truthUpgradeTheologyCost)}}</td>
+						</tr>
+						<tr>
+							<th :class="{needed:magic<truthUpgradeMagicCost}">{{translate(`魔力`)}}</th>
+							<td colspan="2">{{pn(truthUpgradeMagicCost)}}</td>
+						</tr>
+						<tr>
+							<th :class="{needed:science<truthUpgradeScienceCost}">{{translate(`研究`)}}</th>
+							<td colspan="2">{{pn(truthUpgradeScienceCost)}}</td>
+						</tr>
+					</tbody>
+				</table>
+				<hr>
+				<div>
+					<button @click="truthUpgrade"
+					:disabled="!canUpgradeTruth||TRUTH_UPGRADES[truthLevel].gugu">
+						<span>
+							{{translate(`追寻真理`)}}
+						</span>
+					</button>
+					<span v-if="!truthUpgradeVaild">
+						<em>{{translate(`将来实验数据上有偏差，你是要负责任的！`)}}</em>
+					</span>
+					<hint-message :value="truthUpgradeResult" :update="truthUpgradeMessageUpdate"></hint-message>
+					<hint-message :value="truthUpgradeMessage" :update="truthUpgradeMessageUpdate"></hint-message>
+				</div>
+			</div>
+			<div v-if="techLevel('devotionInduction')>0">
+				<h4 v-html="translate(`感应`)"></h4>
+				<div>
+					<button @click="getDevotion">{{translate(`虔诚`)}}</button>
+					<span>{{translate(`强度:{0}`,pn(devotion))}}</span>
+					<span>{{translate(`膜拜x{0}`,pn(devotionInductionFactor))}}</span>
+				</div>
+				<div v-if="techLevel('warMindInduction')>0">
+					<hr>
+					<button @click="getWarMind">{{translate(`战意`)}}</button>
+					<span :class="{danger:warMind>=warLevelUpgradeNeed}">{{translate(`强度:{0}`,pn(warMind))}}</span>
+					<span>{{translate(`战争等级:{0}`,pn(Math.ceil(warLevel)))}}</span>
+				</div>
+				<div v-if="techLevel('timeInduction')>0">
+					<hr>
+					<button @click="getTimeIDC">{{translate(`时间`)}}</button>
+					<span>{{translate(`强度:{0}`,pn(timeIDC))}}</span>
+					<span :class="{danger:worldSpeed>=worldSpeedLimit*0.95}">{{translate(`世界速度:{0}/{1}`,pn(worldSpeed),pn(worldSpeedLimit))}}</span>
+					<hint-message :value="timeShockHint" :update="timeShockHintUpdate"></hint-message>
+					<div v-if="calcTimeUnstablity()!==1" class="danger">
+						<p>
+							{{translate(`时间似乎不太稳定。(不稳定度:{0})`,pn(calcTimeUnstablity()))}}
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col" v-if="truthLevel>0">
+			<h4>{{translate(`技术`)}}</h4>
+			<div v-for="lv in truthLevel">
+				<h5>
+					{{translate(`真理{0}`,pnr(lv))}}
+					<!--  undefined ^ 1 === 1  -->
+					<button @click="selectedTruthLevel[lv]^=1">
+						<span v-if="!selectedTruthLevel[lv]">{{translate(`展开`)}}</span>
+						<span v-else>{{translate(`收起`)}}</span>
+					</button>
+				</h5>
+				<div v-if="selectedTruthLevel[lv]">
+					<p v-if="Object.keys(TECH[lv]).length===0">
+						<del>{{translate(`咕咕咕……`)}}</del>
+					</p>
+					<ul v-else>
+						<li v-for="(tech,id) in TECH[lv]" v-if="tech.require.every(([id,cnt])=>techLevel(id)>=cnt)">
+							<button @click="buyTech(lv,id)"
+							:disabled="!canBuyTech(lv,id)">
+								{{translate(tech.name)}} Lv.{{techLevel(id)}}
+								[{{tech.cost(techLevel(id)).map(([item,value])=>translate(SAVE_ITEMS[item].format).replace(/VALUE/g,pn(value))).join(',')}}]
+							</button>
+							<div>{{translate(tech.description)}}</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="area" v-if="tech.explore>0">
+		<h2 v-html="translate(`外域`)"></h2>
+		<blockquote>
+			<p v-html="translate(`随着文明的重新建立，人们意识到这个星球上遗留的文明不止一个。{!}“比平凡与愚昧更可怕的是失去光明。”{!}他们是否仍膜拜着{Siyuan}呢？`)"></p>
+			<p v-html="translate(`不管如何，人们已经不甘于平凡的生活了。{!}当得知关于敌人的消息后，他们反而热血沸腾，渴望通过战斗来获得全新的资源。`)"></p>
+		</blockquote>
+		<div class="area">
+			<div class="col">
+				<div class="area">
+					<h4 v-html="translate(`元素`)"></h4>
+					<div>
+						<strong>{{translate(`光明:{0}%`,pn(Math.floor(light*10000)/100))}}</strong>
+					</div>
+					<div>
+						<button @click="buyElementTower"
+						:disabled="!canBuyElementTower">{{translate(`{0}座元素塔 [{1}块巨石,{2}座法阵,{3}枚透镜]`,elementTower,pn(elementTowerHugeStoneCost),pn(elementTowerFazhenCost),pn(elementTowerLenCost))}}</button>
+					</div>
+					<hr>
+					<table v-if="elementTower>0" class="ww">
+						<tbody>
+							<tr>
+								<th>{{translate(`元素`)}}</th>
+								<th>{{translate(`拥有量`)}}</th>
+							</tr>
+							<tr v-for="(el,id) in ELEMENTS" v-if="elementOwned[id]">
+								<td>
+									<strong :style="{color:el.color}">
+										{{el.name}}
+									</strong>
+								</td>
+								<td>{{pn(element[id])}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="area">
+					<h4 v-html="translate(`入侵`)"></h4>
+					<div>
+						<progress class="ww" max="1" :value="enemyProgress"></progress>
+					</div>
+					<table v-if="enemy.current.length>0" class="ww">
+						<tbody>
+							<tr>
+								<th colspan="2">{{translate(`敌人`)}}</th>
+								<th>{{translate(`生命`)}}</th>
+								<th>{{translate(`距离`)}}</th>
+								<th>{{translate(`攻击`)}}</th>
+								<th>{{translate(`速度`)}}</th>
+							</tr>
+							<tr>
+								<th>{{translate(`等级`)}}</th>
+								<th>{{translate(`功勋`)}}</th>
+								<th></th>
+								<th>{{translate(`意志`)}}</th>
+								<th>{{translate(`符咒`)}}</th>
+								<th>{{translate(`护甲`)}}</th>
+							</tr>
+							<template v-for="(e,id) in enemy.current">
+								<tr :style="{background:id%2?'#f0f0f0':'#ffffff'}">
+									<td colspan="2">
+										{{getName(e.dna)}}
+									</td>
+									<td>{{pn(e.abbr.health)}}</td>
+									<td>
+										<span :class="{danger:e.pos===0}">{{pn(e.pos)}}</span>
+									</td>
+									<td>{{pn(e.abbr.attack)}}</td>
+									<td>{{pn(e.abbr.speed)}}</td>
+								</tr>
+								<tr :style="{background:id%2?'#f0f0f0':'#ffffff'}">
+									<td>{{pn(Math.round(Math.log(e.strength)/Math.log(1.2)+1))}}</td>
+									<td>{{pn(e.score)}}☆</td>
+									<td></td>
+									<td>{{pn(e.abbr.defendx)}}</td>
+									<td>{{pn(e.abbr.defendy)}}</td>
+									<td>{{pn(e.abbr.defendz)}}</td>
+								</tr>
+							</template>
+						</tbody>
+					</table>
+					<div v-if="enemy.current.length>0">
+						<br>
+						<button @click="salvation" :disabled="light&lt;0.5">
+							{{translate(`召唤拯救 [20%光明]`)}}
+						</button>
+						<span>
+							{{translate(`拥有至少50%光明才可使用`)}}
+						</span>
+					</div>
+					<div v-if="enemy.arr.length+enemy.pop.length>0">
+						<hr>
+						<div>
+							<strong>{{translate(`敌方种群大小:{0}`,pn(enemy.pop.length))}}</strong>
+						</div>
+						<div>
+							<strong>{{translate(`基因继承器大小:{0}`,enemy.arr.length)}}</strong>
+						</div>
+						<div>
+							<button @click="showEnemyArr^=1">
+								<span v-if="showEnemyArr">{{translate(`收起基因继承器`)}}</span>
+								<span v-else>{{translate(`展开基因继承器`)}}</span>
+							</button>
+							<div v-if="showEnemyArr">
+								<hr>
+								<table v-if="enemy.arr.length>0" class="ww">
+									<tbody>
+										<tr>
+											<th>{{translate(`攻`)}}</th>
+											<th>{{translate(`速`)}}</th>
+											<th>{{translate(`命`)}}</th>
+											<th>{{translate(`志`)}}</th>
+											<th>{{translate(`赋`)}}</th>
+											<th>{{translate(`防`)}}</th>
+										</tr>
+										<tr v-for="(dna,id) in enemy.arr">
+											<td>{{pn(dna.attack)}}</td>
+											<td>{{pn(dna.speed)}}</td>
+											<td>{{pn(dna.health)}}</td>
+											<td>{{pn(dna.defendx)}}</td>
+											<td>{{pn(dna.defendy)}}</td>
+											<td>{{pn(dna.defendz)}}</td>
+										</tr>
+									</tbody>
+								</table>
+								<div v-else>
+									<p v-html="translate(`敌方基因继承器空空如也……`)"></p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- <div class="area" v-if="techLevel('blessing')>0">
+					<h4 v-html="translate(`探索`)"></h4>
+					<div>
+						<span>{{translate(`正在探索`)}}<strong>{{ENV[magicSpecialty].name}}</strong></span>
+						<span>
+							{{translate(`特产:`)}}
+							<span :style="{color:ELEMENTS[ENV[magicSpecialty].specialElement].color}"><strong>{{ELEMENTS[ENV[magicSpecialty].specialElement].name}}</strong></span>{{translate(`元素`)}}
+						</span>
+						<hr>
+						<span v-if="!adventure">
+							<button @click="startAdventure">{{translate(`以{0}生命值开始冒险`,pn(adventurerInitHealth))}}</button>
+						</span>
+						<div v-else>
+							<table class="ww">
+								<tbody>
+									<tr>
+										<th colspan="2">冒险者</th>
+									</tr>
+									<tr>
+										<th>{{translate(`生命值`)}}</th>
+										<td>{{pn(adventure.player.health)}}</td>
+									</tr>
+								</tbody>
+							</table>
+							<hr>
+							<table>
+								<tbody>
+									<tr v-for="line in adventure.map.slice(ADVENTURE_VIEW,ADVENTURE_VIEW*3+1)">
+										<td v-for="grid in line.slice(0,2*ADVENTURE_VIEW+1)"
+										:style="{
+											backgroundColor:grid.bg,
+											color:grid.color,
+											width:'30px',
+											height:'30px',
+											verticalAlign:'middle',
+											textAlign:'center'
+										}">
+											{{GRID_SYMBOLS[grid.t]}}
+										</td>
+									</tr>
+								</tbody>
+							</table>
+							<hr>
+							<div>
+								<button :disabled="adventure.player.health&lt;=0" @click="()=>adventureMove(-1)">↘</button>
+								<button :disabled="adventure.player.health&lt;=0" @click="()=>adventureMove(0)">→</button>
+								<button :disabled="adventure.player.health&lt;=0" @click="()=>adventureMove(1)">↗</button>
+							</div>
+							<button @click="endAdventure">{{translate(`结束冒险`)}}</button>
+						</div>
+					</div>
+				</div> -->
+			</div>
+			<div class="col" v-if="position>0">
+				<div class="area" v-if="position>0">
+					<h4 v-html="translate(`建设`)"></h4>
+					<ul>
+						<li v-for="(t,id) in DEFENSE_BUILDING"
+						v-if="showDB(id)">
+							<div>
+								<button @click="buildDB(id)"
+								:disabled="!canBuildDB(id)">
+									{{t.name}}
+									[{{
+										[
+											...(
+												t.cost().resource.map(
+													([id,value])=>SAVE_ITEMS[id]
+														.format.replace(/VALUE/g,pn(value))
+												)
+											),
+											...(
+												t.cost().element.map(
+													([id,value])=>pn(value)+ELEMENTS[id].name+translate('元素')
+												)
+											)
+										].join(',')
+									}}]
+								</button>
+							</div>
+							<div v-for="d in t.description">
+								<span style="font-weight:bold;">-</span>
+								<span>{{translate(d)}}</span>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="area" v-if="defBuildings.length>0">
+					<h4 v-html="translate(`防御`)"></h4>
+					<div></div>
+						<strong>{{translate(`阵地:{0}/{1}`,pn(defBuildings.length),pn(position))}}</strong>
+						<button @click="defBuildings.sort((a,b)=>(a.id!==b.id)?(a.id>b.id?1:-1):(a.priorityID-b.priorityID))">
+							{{translate(`排序`)}}
+						</button>
+					</div>
+					<table class="ww">
+						<tbody>
+							<tr>
+								<th>{{translate(`建筑`)}}</th>
+								<th>{{translate(`优先攻击`)}}</th>
+								<th colspan="3">{{translate(`状态`)}}</th>
+								<th></th>
+							</tr>
+							<tr v-for="(db,id) in defBuildings">
+								<th>{{DEFENSE_BUILDING[db.id].name}}</th>
+								<td>
+									<select v-model="db.priorityID">
+										<option v-for="(pf,id) in DB_PROI" :value="id">
+											{{pf.name}}
+										</option>
+									</select>
+								</td>
+								<template v-if="db.buildTime>0">
+									<td>
+										{{translate(`□建造中`)}}
+									</td>
+									<td>
+										{{translate(`{0}秒`,pn(db.buildTime))}}
+									</td>
+									<td>
+										<progress style="max-width:50px;" :max="DEFENSE_BUILDING[db.id].buildTime" :value="DEFENSE_BUILDING[db.id].buildTime-db.buildTime"></progress>
+									</td>
+								</template>
+								<template v-else>
+									<td>
+										<span v-if="typeof db.targetID==='undefined'">{{translate(`○等待中`)}}</span>
+										<span v-else-if="typeof enemy.current[db.targetID]!=='undefined'">
+											▷{{getName(enemy.current[db.targetID].dna)}}
+										</span>
+										<span v-else>
+											▷???
+										</span>
+									</td>
+									<template v-if="db.cooldown>0">
+										<td>
+											{{translate(`{0}秒`,pn(db.cooldown))}}
+										</td>
+										<td>
+											<progress style="max-width:50px;" :max="db.lastCooldown" :value="db.cooldown"></progress>
+										</td>
+									</template>
+									<template v-else>
+										<td colspan="2">{{translate(`未处于冷却状态`)}}</td>
+									</template>
+								</template>
+								<td>
+									<button @click="defBuildings.splice(id,1)">{{translate(`拆毁`)}}</button>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div class="area" v-if="tech.magicTree>0">
+			<h2 v-html="translate(`基地`)"></h2>
+			<blockquote>
+				<p v-html="translate(`随着技术的发展，一片专门用于工业生产的区域被开辟出来。{!}为了向{Siyuan}奉上更多的膜拜，人们在此试验千奇百怪的新方法，试图找到一个高效的生产方案。`)"></p>
+				<p v-html="translate(`试验中常见的高风险操作和敌人的攻击是这儿多灾多难的主要原因。{!}幸运的是基地受到{Siyuan}的护佑，不至于被摧毁。`)"></p>
+			</blockquote>
+			<div class="area">
+				<div class="col">
+					<h4>种植</h4>
+					<button :disabled="!canBuyMagicTreeSeed" @click="buyMagicTreeSeed">{{translate(`{0}株魔灵树树苗 [{1}魔元素]`,pn(magicTreeSeed),pn(magicTreeSeedCost))}}</button>
+					<span>&lt;{{translate(`尚未实装`)}}></span>
+				</div>
+			</div>
+		</div>
+		<div class="area" v-if="moCount>1e6">
+			<h2 v-html="translate(`文档`)"></h2>
+			<blockquote>
+				<p v-html="translate(`在探索荒野的时候，人们发现了一些来自失落文明的文档。{!}它们现在看起来奥妙重重，难以读懂，但也许对将来文明的重建有巨大的帮助。`)"></p>
+			</blockquote>
+			<div class="area">
+				<div class="doc">
+					<div class="col" v-if="moCount>1e6">
+						<h4>
+							{{translate(`文档A`)}}
+						</h4>
+						<p v-html="translate(`以这个文明的现有技术水平还不能解读这篇{0}“天书”{1}中的东西，但{Siyuan}一定可以。`,'&lt;a href=&quot;./documentA.pdf&quot;>','&lt;/a>')"></p>
+						<div class="docblock">
+							<strong>{{translate(`因文档过大(约11.2MB)，请点击链接访问。`)}}</strong>
+						</div>
+					</div>
+				</div>
+				<div class="doc">
+					<div class="col" v-if="moCount>1e7">
+						<h4>
+							{{translate(`文档B`)}}
+						</h4>
+						<p v-html="translate(`似乎是一张{0}实验数据表{1}，记载了过去文明探索真理的过程。{!}可惜，真理已有改变，不能直接套用其中的实验数据。`,'&lt;a href=&quot;./documentB.html&quot;>','&lt;/a>')"></p>
+						<iframe :src="'./documentB.html'" class="docblock">
+						</iframe>
+					</div>
+					<div class="col" v-else-if="moCount>=1e6">
+						<h4 v-html="translate(`锟斤拷`)"></h4>
+						<p v-html="translate(`还需要{0}次点击`,pn(1e7-moCount))"></p>
+					</div>
+				</div>
+			</div>
+			<div class="area">
+				<div class="doc">
+					<div class="col" v-if="moCount>3e7">
+						<h4>
+							{{translate(`文档C`)}}
+						</h4>
+						<p v-html="translate(`一份发言记录(有删减)与一张截图，表现了两位高手在膜拜{Siyuan}后取得了丰硕战果时的{0}快乐{1}。`,'&lt;a href=&quot;https://majsoul.union-game.com/0/&quot;>','&lt;/a>')"></p>
+						<div class="docblock">
+							<h3>ニヒル</h3>
+							<img :src="'./documentC1.png'" class="ww">
+							<img :src="'./documentC2.png'" class="ww">
+							<h3>Stepsys</h3>
+							<img :src="'./documentC3.png'" class="ww">
+							<p>{{translate(`(注意 Stepsys 的昵称)`)}}</p>
+						</div>
+					</div>
+					<div class="col" v-else-if="moCount>=1e7">
+						<h4 v-html="translate(`烫烫烫`)"></h4>
+						<p v-html="translate(`还需要{0}次点击`,pn(3e7-moCount))"></p>
+					</div>
+				</div>
+				<div class="doc">
+					<div class="col" v-if="moCount>1e8">
+						<h4>
+							{{translate(`文档D`)}}
+						</h4>
+						<p v-html="translate(`一些php和md文件，似乎是一个{0}个人博客{1}。{!}从博客名(orzsiyuan.com)可以看出即使对于个人，膜拜{Siyuan}也十分重要。`,'&lt;a href=&quot;https://orzsiyuan.com/archives/Algorithm/Simulate-Anneal&quot;>','&lt;/a>')"></p>
+						<div class="docblock">
+							<strong>{{translate(`因博客作者太强，大幅影响加载速度，请点击链接访问。`)}}</strong>
+						</div>
+					</div>
+					<div class="col" v-else-if="moCount>=3e7">
+						<h4 v-html="translate(`屯屯屯`)"></h4>
+						<p v-html="translate(`还需要{0}次点击`,pn(1e8-moCount))"></p>
+					</div>
+				</div>
+			</div>
+			<div class="area">
+				<div class="doc">
+					<div class="col" v-if="moCount>5e8">
+						<h4 v-html="translate(`文档E`)"></h4>
+						<p v-html="translate(`只有大家的领导者才能解读{0}这篇文档{1}。`,'&lt;a href=&quot;./documentE.html&quot;>','&lt;/a>')"></p>
+						<iframe :src="'./documentE.html'" class="docblock">
+						</iframe>
+					</div>
+					<div class="col" v-else-if="moCount>=1e8">
+						<h4 v-html="translate(`诺诺诺`)"></h4>
+						<p v-html="translate(`还需要{0}次点击`,pn(5e8-moCount))"></p>
+					</div>
+				</div>
+				<div class="doc">
+					<div class="col" v-if="moCount>1e9">
+						<h4 v-html="translate(`文档F`)"></h4>
+						<div class="docblock">
+							<table>
+								<tbody>
+									<tr>
+										<th>⊕</th>
+										<th v-for="el in ELEMENTS" :style="{color:el.color}">
+											{{el.token}}
+										</th>
+									</tr>
+									<tr v-for="el in ELEMENTS">
+										<th :style="{color:el.color}">
+											{{el.token}}
+										</th>
+										<td v-for="el in ELEMENTS">
+											{{translate(`咕`)}}
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="col" v-else-if="moCount>=5e8">
+						<h4>QAQ</h4>
+						<p v-html="translate(`还需要{0}次点击`,pn(1e9-moCount))"></p>
+					</div>
+				</div>
+			</div>
+			<div class="area">
+				<div class="doc">
+					<div class="col" v-if="moCount>5e9">
+						<h4 v-html="translate(`文档G`)"></h4>
+						<p>
+							<del>{{translate(`咕咕咕……`)}}</del>
+						</p>
+						<p>
+							<del>{{translate(`“我千辛万苦点了五十亿次你就给我看这个？”`)}}</del>
+						</p>
+					</div>
+					<div class="col" v-else-if="moCount>=1e9">
+						<h4 v-html="translate(`咕咕咕`)"></h4>
+						<p v-html="translate(`还需要{0}次点击`,pn(5e9-moCount))"></p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="area">
+			<h2 v-html="translate(`杂项`)"></h2>
+			<p>
+				{{translate(`当前版本: {0}`,VERSION,translate(VERSION_NAME))}}
+			</p>
+			<div class="col">
+				<h4 v-html="translate(`存档`)"></h4>
+				<p v-html="translate(`导出时请用{0}Ctrl + A{1}选中，切勿双击选中！`,'&lt;strong>&lt;code>','&lt;/code>&lt;/strong>')"></p>
+				<textarea v-model="saveInput" class="ww" rows="6"></textarea>
+				<div>
+					<button @click="saveImport">{{translate(`导入`)}}</button>
+					<button :disabled="debugging" @click="saveExport">{{translate(`导出`)}}</button>
+				</div>
+			</div>
+			<div class="col">
+				<h4 v-html="translate(`语言`)"></h4>
+				<ul>
+					<li v-for="lang in languages">
+						<button @click="setLanguage(lang)">{{getLangName(lang)}}</button>
+					</li>
+				</ul>
+				<p v-html="translate(`多语言支持目前尚十分简陋。{!}对于没有翻译的文本感到抱歉。`)"></p>
+			</div>
+		</div>
+		<div class="area">
+			<br v-for="_ in 4">
+		</div>
+	</div>
+</div>

@@ -1,0 +1,100 @@
+.col{
+	width: 45%;
+	margin: 0 2.5%;
+	float: left;
+}
+@media screen and (max-width: 900px) {
+	.col{
+		width: 95%;
+		margin: 0 2.5%;
+		float: left;
+	}
+}
+
+.area{
+	width: 100%;
+	float: left;
+}
+
+.docblock{
+	width:100%;
+	height:250px;
+	overflow: auto;
+	border: 2px #444444 solid;
+	/* color:#bbff00 */
+}
+
+.ww{
+	width:100%;
+}
+
+.truthupgrade input[type=range]{
+	width: 100%;
+}
+
+.truthupgrade input[type=number]{
+	max-width: 100px;
+}
+
+.needed{
+	color: gray;
+}
+
+.danger{
+	color:red;
+}
+
+.help{
+	cursor: help;
+	border-bottom: 1px gray dashed;
+}
+
+button{
+	cursor:pointer;
+}
+
+.siyuan{
+	display: inline-block;
+}
+.siyuan::before{
+	content: 'Siyuan';
+	font-weight: bold;
+	font-size: 0.9em;
+	color:red !important;
+}
+.siyuan:first-letter{
+	color:black !important;
+}
+
+.nya{
+	color: palevioletred;
+}
+
+.model-alert-shader{
+	position: fixed;
+	left:0;
+	top:0;
+	width: 100%;
+	height: 100%;
+	/* z-index: 1; */
+	background: rgba(0.5, 0.5, 0.5, 0.5);
+}
+
+.model-alert{
+	position: fixed;
+	left: 35%;
+	top: 35%;
+	width: 30%;
+	height: 30%;
+}
+
+.model-alert-inner{
+	position: relative;
+	width: calc(100% - 18px);
+	height: auto;
+	border: 1px gray solid;
+	border-radius: 5px;
+	background: white;
+	padding: 4px 8px;
+	z-index: 2;
+}
