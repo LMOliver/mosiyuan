@@ -1,3 +1,4 @@
+'use strict';
 {
 
 const LANG_ZH='zh_CN';
@@ -14,7 +15,7 @@ const DICT_DATA={
 		dict:new Map(),
 	},
 };
-
+/* global axios */
 const translateText=async (text,dest)=>{
 	console.groupCollapsed('请求翻译');
 	console.log(text);
@@ -26,7 +27,7 @@ const translateText=async (text,dest)=>{
 		dest,
 		result:result.data.sentences.map(s=>({trans:s.trans.trim(),src:s.orig.trim()})),
 	};
-}
+};
 window.translateText=translateText;
 
 let textSet=new Set();
@@ -66,11 +67,11 @@ function setPlan(){
 }
 
 function getTranslate(text,dest){
-	if(dest==LANG_ZH){
+	if(dest===LANG_ZH){
 		return text;
 	}
 	text=text.trim();
-	if(!text)return '';
+	if(!text){return '';}
 	let dict=DICT_DATA[dest].dict;
 	if(dict.has(text)){
 		return dict.get(text);
@@ -88,11 +89,11 @@ function getTranslate(text,dest){
 }
 
 function translate(text,...args) {
-	text=text.replace(/(?:\<)(?:.+?)(?:\>)/g,(...groups)=>{
+	text=text.replace(/(?:<)(?:.+?)(?:>)/g,(...groups)=>{
 		args.push(groups[0]);
 		return `{${args.length-1}}`;
 	});
-	text=text.split(/\{\!\}/g).map(s=>getTranslate(s,language)).join('');
+	text=text.split(/\{!\}/g).map(s=>getTranslate(s,language)).join('');
 	text=text.replace(/\{\.\}/g,'');
 	for(let i in args){
 		text=text.replace(new RegExp('\\{'+i+'\\}','g'),args[i]);

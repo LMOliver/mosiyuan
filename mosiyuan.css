@@ -1,14 +1,44 @@
+@media screen and (max-width: 1000px) {
+	.col{
+		width: 95%;
+	}
+	.buy-max::before{
+		content: '+';
+	}
+	.popmessage{
+		width: 70%;
+	}
+}
+@media screen and (min-width:1000px){
+	.col{
+		width: 45%;
+	}
+	.buy-max::before{
+		content: '最大';
+	}
+	.popmessage{
+		width: 18%;
+	}
+}
+
 .col{
-	width: 45%;
 	margin: 0 2.5%;
 	float: left;
 }
-@media screen and (max-width: 900px) {
-	.col{
-		width: 95%;
-		margin: 0 2.5%;
-		float: left;
-	}
+
+.buy-max:disabled{
+	display: none;
+}
+
+.popmessage{
+	position: fixed;
+	top: 0;
+	right: 0;
+	background: rgba(0.5, 0.5, 0.5, 0.5);
+	border: 1px gray solid;
+	border-radius: 5px;
+	background: white;
+	padding: 4px 8px;
 }
 
 .area{
@@ -50,7 +80,8 @@
 }
 
 button{
-	cursor:pointer;
+	cursor: pointer;
+	margin: 4px 0;
 }
 
 .siyuan{
