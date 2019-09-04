@@ -63,7 +63,7 @@
 }
 
 .truthupgrade input[type=number]{
-	max-width: 100px;
+	width: calc(100% - 4px);
 }
 
 .needed{
@@ -86,12 +86,15 @@ button{
 
 .siyuan{
 	display: inline-block;
-}
-.siyuan::before{
-	content: 'Siyuan';
 	font-weight: bold;
 	font-size: 0.9em;
-	color:red !important;
+	font-weight: 700;
+	padding-inline-start: 2px;
+	padding-inline-end: 2px;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif,
+}
+.siyuan{
+	color:red;
 }
 .siyuan:first-letter{
 	color:black !important;

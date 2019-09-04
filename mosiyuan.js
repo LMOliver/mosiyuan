@@ -144,63 +144,63 @@
 		if(!Number.isSafeInteger(num)||num<0||num>=s.length){return pn(num);}
 		return s[num];
 	}
-
+	const SIYUAN='<span class="siyuan">Siyuan</span>';
 	const DAILY_MESSAGES=[
-		'你强归你强，Siyuan比你强！',
-		'你可以按住<code>Enter</code>来快速点击一个按钮。',
-		'Siyuan是我们的红太阳，没有她我们会死！',
-		'你<strong>不能</strong>通过按住<code>Shift</code>点击一个按钮以直接购买最大数量的事物。',
-		'今天又是美好的一天~',
-		'若不是Siyuan相助，也许我到现在还不知道我做错了什么。{!}现在我知道了，是<code>LCT</code>上<code>splay</code>的时候判断父亲是否为根直接用了<code>if(fa->fa)</code>。',
-		'洁白的光点游走于漆黑的天幕之上，暗紫色的薄纱在其间舞动。{!}在此无月之夜，是否可以知晓：“后缀自动机怎么写？”',
-		'那些文档有一部分真的有用……',
-		'Siyuan 膜 她 自 己',
-		'Siyuan D 她 自 己',
-		'如果你花掉了一些东西，它的花费也会降低，就像你从没买过它一样。',
-		'<a href="https://lmoliver.github.io">qwq</a>',
-		'要想探寻真理，不仅要虔诚膜拜Siyuan，领导者的实力也是很重要的。',
-		'<code>code.replace(/\\n\\s*\\{/mg,\'{\');</code>',
-		'嘤嘤嘤',
-		'Hello world!',
-		'在夕阳的照耀下，教堂的圆顶散发出金色的光辉。',
-		'这一刻，我们都是Siyuan的忠实粉丝。',
-		'Do the magic!',
-		'传说Siyuan会在被她抛弃的终端上用 root 权限执行<code>rm -rf /*</code>。',
-		'Siyuan太强了，所以你复制不了这个网站中的任何一个Siyuan。',
-		'空谈误国，实干兴邦。',
-		'<img src="./daily1.png">',
-		'<img src="./daily2.png">',
-		'<img src="./daily3.png">',
-		'<img src="./daily4.png">',
-		'OrzSiyuan 就来 <a href="https://orzsiyuan.com">orzsiyuan.com</a>！',
-		'你知道吗？{!}Siyuan几乎每天都会上几次<a href="http://lydsy.online">http://lydsy.online</a>！{!}(难道网址中的<code>dsy</code>是天意？)',
-		'追寻真理的各种花费与你本轮尝试次数有关。',
-		'追寻真理时重置会将当前成功轮数也清空！',
-		'在真理之路上，要不畏艰辛，敢于推翻重来，才不会在错误的道路上越走越远。',
-		'窝 又 被 Siyuan D 了 QAQ',
-		'道路千万条，光明第一条。{!}防御没做好，黑屏两行泪。',
-		'元素和光明在你下线时也会增加！',
-		'贪 D 的(9^0+9^1+...+9^n+...)头 Siyuan',
-		'Siyuan:“辣鸡，真辣鸡！”',
-		'Siyuan:“泥萌怎么这么菜 nya？”',
-		'Siyuan:“我就 D 你怎么了？”',
-		'Siyuan:“哪场 ** CF 连样例解释都没有？”',
-		'Siyuan:“tourist 能过，那窝肯定也能过！”',
-		'萌新三连:“窝怎么立直了 nya？{!}胡是什么 nya，可以跳过吗？{!}自摸是不是每巡都有的，好烦 nya！”',
-		'Markdown: [https://orzsiyuan.com](https://lmoliver.github.io/mosiyuan)',
-		'如果出现了难以对付的敌人，你可以<strong>召唤拯救</strong>扫清他们。',
-		'祝贺 Siyuan ZJOI2019 Day2 40+40+50=130分 && 触发女装 Flag !',
-		'2019-08-21 Siyuan 被阿祭',
-		'Siyuan AK NOI！',
-		'Siyuan AK IOI！',
-		'Siyuan 女装！',
-		'<strong>传教</strong>可以增加你的信徒数量。',
-		'传教中出现的题目来自某场Siyuan将要 AK 的比赛的笔试。',
-		'洛谷膜拜 Siyuan 主题：<a href="https://www.luogu.org/theme/design/5321">https://www.luogu.org/theme/design/5321</a>',
-		'强迫症真的这么好吗？',
-		'JRNEOJ 不是 OJ！',
-		'当世界速度达到上限时，会触发<strong>时间震荡</strong>，使你失去一些世界速度。',
-	].map(s=>s.replace(/Siyuan/g,'{Siyuan}').replace(/nya/g,'<span class="nya">nya</span>'));
+		`你强归你强，${SIYUAN}比你强！`,
+		`你可以按住<code>Enter</code>来快速点击一个按钮。`,
+		`${SIYUAN}是我们的红太阳，没有她我们会死！`,
+		`你<strong>不能</strong>通过按住<code>Shift</code>点击一个按钮以直接购买最大数量的事物。`,
+		`今天又是美好的一天~`,
+		`若不是${SIYUAN}相助，也许我到现在还不知道我做错了什么。现在我知道了，是<code>LCT</code>上<code>splay</code>的时候判断父亲是否为根直接用了<code>if(fa->fa)</code>。`,
+		`洁白的光点游走于漆黑的天幕之上，暗紫色的薄纱在其间舞动。在此无月之夜，是否可以知晓：“后缀自动机怎么写？”`,
+		`那些文档有一部分真的有用……`,
+		`${SIYUAN} 膜 她 自 己`,
+		`${SIYUAN} D 她 自 己`,
+		`如果你花掉了一些东西，它的花费也会降低，就像你从没买过它一样。`,
+		`<a href="https://lmoliver.github.io">qwq</a>`,
+		`要想探寻真理，不仅要虔诚膜拜${SIYUAN}，领导者的实力也是很重要的。`,
+		`<code>code.replace(/\\n\\s*\\{/mg,\'{\');</code>`,
+		`嘤嘤嘤`,
+		`Hello world!`,
+		`在夕阳的照耀下，教堂的圆顶散发出金色的光辉。`,
+		`这一刻，我们都是${SIYUAN}的忠实粉丝。`,
+		`Do the magic!`,
+		`传说${SIYUAN}会在被她抛弃的终端上用 root 权限执行<code>rm -rf /*</code>。`,
+		`${SIYUAN}太强了，所以你复制不了这个网站中的任何一个${SIYUAN}。`,
+		`空谈误国，实干兴邦。`,
+		`<img src="./daily1.png">`,
+		`<img src="./daily2.png">`,
+		`<img src="./daily3.png">`,
+		`<img src="./daily4.png">`,
+		`Orz${SIYUAN} 就来 <a href="https://orzsiyuan.com">orzsiyuan.com</a>！`,
+		`你知道吗？${SIYUAN}几乎每天都会上几次<a href="http://lydsy.online">http://lydsy.online</a>！(难道网址中的<code>dsy</code>是天意？)`,
+		`追寻真理的各种花费与你本轮尝试次数有关。`,
+		`追寻真理时重置会将当前成功轮数也清空！`,
+		`在真理之路上，要不畏艰辛，敢于推翻重来，才不会在错误的道路上越走越远。`,
+		`窝 又 被 ${SIYUAN} D 了 QAQ`,
+		`道路千万条，光明第一条。防御没做好，黑屏两行泪。`,
+		`元素和光明在你下线时也会增加！`,
+		`贪 D 的(9^0+9^1+...+9^n+...)头 ${SIYUAN}`,
+		`${SIYUAN}:“辣鸡，真辣鸡！”`,
+		`${SIYUAN}:“泥萌怎么这么菜 nya？”`,
+		`${SIYUAN}:“我就 D 你怎么了？”`,
+		`${SIYUAN}:“哪场 ** CF 连样例解释都没有？”`,
+		`${SIYUAN}:“tourist 能过，那窝肯定也能过！”`,
+		`萌新三连:“窝怎么立直了 nya？胡是什么 nya，可以跳过吗？自摸是不是每巡都有的，好烦 nya！”`,
+		`Markdown: [https://orzsiyuan.com](https://lmoliver.github.io/mosiyuan)`,
+		`如果出现了难以对付的敌人，你可以<strong>召唤拯救</strong>扫清他们。`,
+		`祝贺 ${SIYUAN} ZJOI2019 Day2 40+40+50=130分 && 触发女装 Flag !`,
+		`2019-08-21 ${SIYUAN} 被阿祭`,
+		`${SIYUAN} AK NOI！`,
+		`${SIYUAN} AK IOI！`,
+		`${SIYUAN} 女装！`,
+		`<strong>传教</strong>可以增加你的信徒数量。`,
+		`传教中出现的题目来自某场${SIYUAN}将要 AK 的比赛的笔试。`,
+		`洛谷膜拜 ${SIYUAN} 主题：<a href="https://www.luogu.org/theme/design/5321">https://www.luogu.org/theme/design/5321</a>`,
+		`强迫症真的这么好吗？`,
+		`JRNEOJ 不是 OJ！`,
+		`当世界速度达到上限时，会触发<strong>时间震荡</strong>，使你失去一些世界速度。`,
+	].map(s=>s.replace(/nya/g,'<span class="nya">nya</span>'));
 
 	function makeProblem(str,...was){
 		let [statement,answers]=str.split(/[：？]/g);
@@ -213,352 +213,350 @@
 		if(answers.length===1){
 			answers=answers[0].split('、');
 		}
-		return [statement.replace(/_{2,}/g,'<input style="width:10%;" disabled="">'),answers.map(s=>`{.}${s}`),was.map(s=>`{.}${s}`)];
+		return [statement.replace(/_{2,}/g,'<input style="width:10%;" disabled="">'),answers,was];
 	}
 
 	const SP_PROBLEMS=[
-		...[
-			['NOI 机试使用的操作系统是：Linux','Windows','MacOS','Android'],
-			['Linux 中为文件改名使用的命令是：mv <旧文件名> <新文件名>','rm <旧文件名> <新文件名>','cp <旧文件名> <新文件名>','rename <旧文件名> <新文件名>'],
-			['在 Linux 中返回上一级目录使用的命令是：cd ..','cd .','cd ...','cd ./'],
-			['在 Linux 中删除当前目录下的 test 目录的命令是：rm -r test','rm -rf /*','rm -d test','rm test'],
-			['当前目录下有一个编译好的可执行文件 a.out，执行它使用的命令是：./a.out','a.out','./a','../a.out'],
-			['使用高级语言编写的程序称之为：源程序','高级程序','高级语言程序','现代程序'],
-			['在 NOI Linux 系统中可以用来调试程序的程序是：gdb','g++','fpc','debugger'],
-			['在 Linux 系统中，文件夹中的文件可以与该文件夹同名吗：可以','不行','只有{Siyuan}才能做到','我不知道'],
-			['Linux 系统中杀死名为 test 的后台进程的命令是：killall test','kill test','kill -name test','kill $test'],
-			['Linux 系统中可以查看隐藏文件的命令是：ls -a','ls -h','ls -s','ls -i'],
-			['Linux 系统中编译 C 程序的编译器是：gcc','g++','fpc','c'],
-			['Linux 系统中编译 Pascal 程序的编译器是：fpc','pas','gcc','p++'],
-			['Linux 系统中编译 C++程序的编译器是：g++','gcc','cpp','c++'],
-			['Linux 系统中，将当前目录下的文件名打印到 tmp 文件中的命令是：ls >tmp','./ls >tmp','tmp <ls','./tmp <ls'],
-			['Linux 系统中，测量当前目录下程序 test 运行时间的命令是：time ./test','./test | time','./time ./test','time test'],
-			['vim 编辑器中，强制退出不保存修改应当输入：:q!',':wq!',':ZZ',':eN'],
-			['vim 编辑器中，强制退出并保存修改可输入以下三种命令之一：:wq、ZZ、:x',':sq'],
-			['vim 编辑器中，定位到文件中第 12 行应当输入：:12','/12',':l12','\\12'],
-			['vim 编辑器中，在文件中查找字符串“12”应当输入：/12',':r12','\\12',':12'],
-			['使用 gcc 编译 C 程序时，生成调试信息的命令行选项是：-g','-d','-debug','-h'],
-			['使用 gcc 编译 C 程序时，生成所有警告信息的命令行选项是：-Wall','-Wevery','-Werror','-Wnoexpect'],
-			['使用 gcc 编译 C 程序时，只编译生成目标文件的命令行选项是：-c','-o','-d','-a'],
-			['使用 gcc 编译 C 程序时，指定输出文件名的命令行选项是：-o','-n','-c','-a'],
-			['如果 C 程序中使用了 math.h 中的函数，在编译时需要加入选项：-lm','-lmath','-m','-math'],
-			['Linux 系统中具有最高权限的用户是：root','admin','OP','friend'],
-			['在 Linux 的各个虚拟控制台间切换的快捷键有：Ctrl+Alt+F1、Ctrl+Alt+F2、Ctrl+Alt+F3、Ctrl+Alt+F4、Ctrl+Alt+F5、Ctrl+Alt+F6','Ctrl+Alt+Esc','Ctrl+Alt+F7','Ctrl+Alt+F8','Ctrl+Alt+Del'],
-			['在 NOI Linux 中，从字符控制台切换回桌面环境使用的快捷键是：Ctrl+Alt+F7','Ctrl+Alt+Esc','Ctrl+Alt+F1','Ctrl+C'],
-			['在 NOI Linux 中默认使用的 Shell 是：bash','shell','bat','cmd'],
-			['在 Linux 中查看当前系统中的进程使用的命令是：ps','ts','mg','pr'],
-			['在 Linux 中查看进程的 CPU 利用率使用的命令是：ps','tr','pr','mg'],
-			['如果自己的程序进入死循环，应当如何终止：Ctrl+C','Ctrl+Z','Ctrl+D','Alt+F4'],
+		['NOI 机试使用的操作系统是：Linux','Windows','MacOS','Android'],
+		['Linux 中为文件改名使用的命令是：mv <旧文件名> <新文件名>','rm <旧文件名> <新文件名>','cp <旧文件名> <新文件名>','rename <旧文件名> <新文件名>'],
+		['在 Linux 中返回上一级目录使用的命令是：cd ..','cd .','cd ...','cd ./'],
+		['在 Linux 中删除当前目录下的 test 目录的命令是：rm -r test','rm -rf /*','rm -d test','rm test'],
+		['当前目录下有一个编译好的可执行文件 a.out，执行它使用的命令是：./a.out','a.out','./a','../a.out'],
+		['使用高级语言编写的程序称之为：源程序','高级程序','高级语言程序','现代程序'],
+		['在 NOI Linux 系统中可以用来调试程序的程序是：gdb','g++','fpc','debugger'],
+		['在 Linux 系统中，文件夹中的文件可以与该文件夹同名吗：可以','不行',`只有${SIYUAN}才能做到`,'我不知道'],
+		['Linux 系统中杀死名为 test 的后台进程的命令是：killall test','kill test','kill -name test','kill $test'],
+		['Linux 系统中可以查看隐藏文件的命令是：ls -a','ls -h','ls -s','ls -i'],
+		['Linux 系统中编译 C 程序的编译器是：gcc','g++','fpc','c'],
+		['Linux 系统中编译 Pascal 程序的编译器是：fpc','pas','gcc','p++'],
+		['Linux 系统中编译 C++程序的编译器是：g++','gcc','cpp','c++'],
+		['Linux 系统中，将当前目录下的文件名打印到 tmp 文件中的命令是：ls >tmp','./ls >tmp','tmp <ls','./tmp <ls'],
+		['Linux 系统中，测量当前目录下程序 test 运行时间的命令是：time ./test','./test | time','./time ./test','time test'],
+		['vim 编辑器中，强制退出不保存修改应当输入：:q!',':wq!',':ZZ',':eN'],
+		['vim 编辑器中，强制退出并保存修改可输入以下三种命令之一：:wq、ZZ、:x',':sq'],
+		['vim 编辑器中，定位到文件中第 12 行应当输入：:12','/12',':l12','\\12'],
+		['vim 编辑器中，在文件中查找字符串“12”应当输入：/12',':r12','\\12',':12'],
+		['使用 gcc 编译 C 程序时，生成调试信息的命令行选项是：-g','-d','-debug','-h'],
+		['使用 gcc 编译 C 程序时，生成所有警告信息的命令行选项是：-Wall','-Wevery','-Werror','-Wnoexpect'],
+		['使用 gcc 编译 C 程序时，只编译生成目标文件的命令行选项是：-c','-o','-d','-a'],
+		['使用 gcc 编译 C 程序时，指定输出文件名的命令行选项是：-o','-n','-c','-a'],
+		['如果 C 程序中使用了 math.h 中的函数，在编译时需要加入选项：-lm','-lmath','-m','-math'],
+		['Linux 系统中具有最高权限的用户是：root','admin','OP','friend'],
+		['在 Linux 的各个虚拟控制台间切换的快捷键有：Ctrl+Alt+F1、Ctrl+Alt+F2、Ctrl+Alt+F3、Ctrl+Alt+F4、Ctrl+Alt+F5、Ctrl+Alt+F6','Ctrl+Alt+Esc','Ctrl+Alt+F7','Ctrl+Alt+F8','Ctrl+Alt+Del'],
+		['在 NOI Linux 中，从字符控制台切换回桌面环境使用的快捷键是：Ctrl+Alt+F7','Ctrl+Alt+Esc','Ctrl+Alt+F1','Ctrl+C'],
+		['在 NOI Linux 中默认使用的 Shell 是：bash','shell','bat','cmd'],
+		['在 Linux 中查看当前系统中的进程使用的命令是：ps','ts','mg','pr'],
+		['在 Linux 中查看进程的 CPU 利用率使用的命令是：ps','tr','pr','mg'],
+		['如果自己的程序进入死循环，应当如何终止：Ctrl+C','Ctrl+Z','Ctrl+D','Alt+F4'],
 
-			['可执行文件 a.out 从标准输入读取数据。{!}现有一组输入数据保存在 1.in 中，使用这个测试数据文件测试自己的程序的命令是：./a.out <1.in','1.in | a.out','1.in | ./a.out','a.out <1.in'],
-			['可执行文件 prog_1 向标准输出输出运行结果。{!}将输出结果保存到 1.out 文件中使用的命令是：./prog_1 >1.out','./prog_1 | 1.out','prog_1 >1.out','prog_1 | 1.out'],
-			['使用 Reset 键强行重新启动计算机可能会对系统造成的后果是：文件系统损坏、膜拜{Siyuan}存档损坏','中央处理器损坏','硬盘损坏'],
-			['在 Linux 系统中，用于查看文件的大小的命令是：ls -l','ls -s','ls -a','ls -m'],
-			[
-				`当前目录中有如下文件<pre><code>-rw-r--r-- 1 user None 8.7K Jul 2 16:35 foobar
+		['可执行文件 a.out 从标准输入读取数据。现有一组输入数据保存在 1.in 中，使用这个测试数据文件测试自己的程序的命令是：./a.out <1.in','1.in | a.out','1.in | ./a.out','a.out <1.in'],
+		['可执行文件 prog_1 向标准输出输出运行结果。将输出结果保存到 1.out 文件中使用的命令是：./prog_1 >1.out','./prog_1 | 1.out','prog_1 >1.out','prog_1 | 1.out'],
+		[`使用 Reset 键强行重新启动计算机可能会对系统造成的后果是：文件系统损坏、膜拜${SIYUAN}存档损坏`,'中央处理器损坏','硬盘损坏'],
+		['在 Linux 系统中，用于查看文件的大小的命令是：ls -l','ls -s','ls -a','ls -m'],
+		[
+			`当前目录中有如下文件<pre><code>-rw-r--r-- 1 user None 8.7K Jul 2 16:35 foobar
 -rw-r--r-- 1 user None 93   Jul 2 16:35 foobar.c
 -rwx------ 1 user None 144  Jul 2 16:35 foobar.sh
 </code></pre>
-		其中，可以执行的文件是：foobar.sh`,
-				'foobar',
-				'foobar.c',
-				'以上文件均不能执行'
-			],
-			['评测系统中对程序源文件大小的限制是：小于 100KB','小于 1MB','小于 6KB','小于 5MB'],
-			['如无另行说明，评测系统中对程序使用内存的限制是：以硬件资源为限','256MB','512MB','4GB'],
-			['Linux 下的换行字符为：\\n','\\r','\\n\\r','\\r\\n'],
-			['终止一个失去响应的进程（$pid 代表进程号）的命令是：kill $pid','killall $pid','kill -n $pid','kill -i $pid'],
-			['Linux 中是否区分文件和目录名称的大小写：是','否','只区分文件','只区分目录'],
-			['选手在 NOI 机试过程中是否禁止使用网络：是','否','只有{Siyuan}可以','使用前需向监考人员举手示意'],
-			['为程序 my.c 创建一个备份 myc.bak 时，使用的命令是：cp my.c myc.bak','he my.c my.bak','mv -c my.bak my.c','copy my.c my.bak'],
-			['调试程序的方法有：单步调试、使用 print 类语句打印中间结果、读源代码','向监考人员求助','膜拜{Siyuan}以寻求帮助'],
-			['在考试过程中，如果出现系统死机或者崩溃现象，选手应当采取的措施是：举手示意监考人员处理','关机重启','向{Siyuan}祈祷','使用旁边的电脑'],
-			['提交的答案程序中如果包含 NOI 考试明确禁止使用的代码，后果是：本题成绩以 0 分计算','本场比赛成绩以 0 分计算','受到禁赛处罚','以评测机分数为准'],
-			['对评测结果有疑义，需要申请复评，则：提出书面申请；经领队、科学委员会主席签字确认后，提交至评测人员','在调整程序之后','在膜拜{Siyuan}之后'],
-			['复评成绩较原始成绩有变化，则：以复评成绩为准','以两次最高分为准','由评测人员确定','复评成绩无效'],
-			['Pascal 中 integer 和 long integer 类型的长度和编译选项是否有关系：有关系','没有关系','因人而异','只有 integer 长度和编译选项有关系'],
-			['NOI 考试对 C++ 语言模板的使用有限制吗？没有','有','禁止使用 <code>bits/stdc++.h</code>','大括号不能换行'],
-			['NOI 考试对 PASCAL 语言的使用有限制吗？有','没有','因人而异','视情况而定'],
-			['名为 FILE 的文件和名为 File 的文件在 Linux 系统中被认为是：不同的文件','相同的文件','冲突的文件','有相同文件名的文件'],
-			['目录 DIRECT 和目录 Direct 在 Linux 系统中被认为是：不同的目录','相同的目录','冲突的目录','有相同名称的目录'],
-			['在 NOI 正式考试中如何登录自己的比赛用机：使用考前工作人员下发的账户及密码','使用膜拜{Siyuan}的账户及密码','使用试机时使用的账户及密码','使用考试开始时公布的账户及密码'],
-			['如果考试分多日进行，那么选手的考试账户和口令：由工作人员在每场考试开始前下发','在第一场考试前统一下发','在试机时统一下发','考试开始前公示于 NOI 官网上'],
-			['考试结束后，应如何处理密码条：保存好密码条，用于复测','保存好密码条，用于下一场考试','销毁密码条，避免密码泄露','保存好密码条，用于证明成绩'],
-			['选手答案文件保存的目录是：选手目录下和考题名称符合的目录','选手目录下和考题编号符合的目录','根目录下和考题名称符合的目录','根目录下和考题编号符合的目录'],
-			['选手答案的文件名要求是：和试卷的题目摘要中所示文件名一致','和试卷的题目摘要中题目的英文名称一致','和试卷的题目摘要中输出文件名一致','和试卷的题目摘要中的题目编号一致'],
-			['选手答案的文件名大小写错误，成绩会怎样：0 分','成绩不变','取消比赛资格','需要提出书面申请；经领队、科学委员会主席签字确认后，提交至评测人员，改正文件名'],
-			['选手提交的源代码文件名是否有特殊要求：源程序文件名由试题名称缩写加后缀构成，试题名称缩写及后缀一律使用小写','没有特殊要求','源程序文件名由试题名称缩写加后缀构成，试题名称缩写及后缀一律使用大写','源程序文件名由试题名称缩写加后缀构成，试题名称缩写使用大写，后缀使用小写'],
-			['在 NOI 考试中，Pascal 源文件的扩展名规定为：pas','cpp','pac','pascal'],
-			['在 NOI 考试中，C 源文件的扩展名规定为：c','C','cpp','ｃ'],
-			['在 NOI 考试中，C++ 源文件的扩展名规定为：cpp','CPP','c++','cpq'],
-			['发现鼠标或其他硬件设备有问题，选手可以：请工作人员更换','在复评时申请加分','使用自带的设备','使用旁边机器的设备'],
-			['对试题理解有问题，选手可以：举手求助','将错就错','膜拜{Siyuan}','谨慎猜测'],
-			['考试结束后选手需要：迅速离开','留在考场内等待复评','等待工作人员收取完毕，有序离开考场','关闭机器电源并离开'],
-			['复评结束后是否还能提交复评申请：不能','能','只能在结果公布前提交','需要领队、科学委员会主席签字确认'],
-			['测试点时间限制的含义是指：题目允许程序运行所占用的用户时间总和的上限值','题目允许程序运行所占用的系统时间总和的上限值','题目允许程序运行所占用的内核时间总和的上限值','题目允许程序运行所占用的计算时间总和的上限值'],
-			['什么情况下选手可以申请延长考试时间：机器出现故障，并由工作人员确认和记录','选手程序出现致命错误','选手丢失密码条','选手因故障自行重启机器'],
-			['考试中选手自行重新启动机器，能否获得加时？不能','能','因人而异','视情况而定'],
-			['草稿纸用完了，如何处理：举手向监考人员求助','使用自带的草稿纸','直接将草稿打在桌面上','膜拜{Siyuan}'],
-			['水喝完了，如何处理：举手向监考人员再要一瓶','到饮水机处自行灌水','渴着','从其他选手处得到水瓶'],
-			['{Siyuan}觉得考试太简单，能提前离开吗？能','不能','将题目全部完成方可离场','只有{Siyuan}能提前离场'],
-			['{Siyuan}离开考场后，发现有个题可以吊打标算，能回去再改吗？不能','能','向监考人员说明情况后可返回考场','向科学委员会提交书面申请并通过后可返回考场'],
-			['考试中机器突然没响应了，如何处理？举手向监考人员求助','自行处理','视情况而定','举手向监考人员求助，并承担总成绩扣分的惩罚'],
-			['考试中发现登录名和密码的单子丢了，如何处理？向工作人员求助','无法参加考试','向工作人员求助，并承担罚时惩罚','自行处理'],
-			['复评的时候忘记登录名和密码了，如何处理？向工作人员求助','无法进行复评','向工作人员求助，并承担罚时惩罚','自行处理'],
-			['在监考人员宣布 NOI 机试开始之前，是否允许选手登录系统和翻阅试卷？否','是','在准备工作完成后可以','视情况而定'],
-			['在 NOI 上机考试中，是否允许选手私自重新启动计算机？否','是','在机器出现问题时可以','在考试开始前可以'],
-			['在 NOI 系列考试中，如果由于文件名不正确导致被判 0 分，提出复评请求，会被接受吗？不会','会','因人而异','视情况而定'],
-			['在 NOI 系列考试中，如果由于文件目录名不正确导致被判 0 分，提出复评请求，会被接受吗？不会','会','因人而异','视情况而定'],
-			['在 NOI 系列考试中，如果由于文件保存路径不正确导致被判 0 分，提出复评请求，会被接受吗？不会','会','因人而异','视情况而定'],
-			['选手可以不使用 IDE 环境编辑程序源代码吗？可以','不可以','只有高手可以','可以，但需承担总成绩扣分的惩罚'],
-			['选手回答填空题，提交的答案中可以包含引号吗？不可以','可以','因人而异','视情况而定'],
-			['选手程序在某测试点上的运行时间仅比时限多 0.005 秒，算不算超时？算','不算','因人而异','视情况而定'],
-			['在 NOI 上机考试中，允许选手使用的编程语言包括：C、C++、Pascal','Python','Java'],
-			['NOI 比赛的题目类型有：非交互式程序题、交互式程序题、答案提交题','交互式答案提交题'],
-			['选手比赛中提交的有效文件类型有：答案文件、源程序','可执行文件','高级程序'],
-			['选手提交的程序不得进行的操作包括：试图访问网络、使用 fork 或其它线程/进程生成函数、打开或创建题目规定的输入/输出文件之外的其它文件、运行其它程序','重定向标准输入输出','进行大量计算'],
-			['以修改过的程序或答案为依据的申诉是否会被受理：否','是','因人而异','视情况而定'],
-			['没有复测结果支持的申诉是否会被受理：否','是','因人而异','视情况而定'],
-			['超过申诉时间的申诉是否会被受理：否','是','因人而异','视情况而定'],
-			['对评测结果中的超时有异议，且复测结果的运行时间与题目时间限制之差小于题目时间限制5％的申诉是否会被受理：否','是','因人而异','视情况而定'],
-			['遇到下列哪些情况可以向工作人员申请加时补偿：计算机硬件故障、操作系统死机','程序出现错误','编辑器配置错误'],
-			['考试时若遇到计算机硬件故障或操作系统死机，应如何处理？举手向工作人员求助','自行处理','举手向监考人员求助，并承担比赛时间减少惩罚','举手向监考人员求助，并承担总成绩扣分的惩罚'],
-			['选手进入考场可以携带的物品是：笔、手表','草稿纸','U 盘'],
-			['选手进入考场不可以携带的物品是：纸、U 盘、手机','笔','手表'],
-			['竞赛组织者将在竞赛场地为选手提供的物品是：草稿纸、饮用水、食品','笔'],
+	其中，可以执行的文件是：foobar.sh`,
+			`foobar`,
+			`foobar.c`,
+			'以上文件均不能执行'
+		],
+		['评测系统中对程序源文件大小的限制是：小于 100KB','小于 1MB','小于 6KB','小于 5MB'],
+		['如无另行说明，评测系统中对程序使用内存的限制是：以硬件资源为限','256MB','512MB','4GB'],
+		['Linux 下的换行字符为：\\n','\\r','\\n\\r','\\r\\n'],
+		['终止一个失去响应的进程（$pid 代表进程号）的命令是：kill $pid','killall $pid','kill -n $pid','kill -i $pid'],
+		['Linux 中是否区分文件和目录名称的大小写：是','否','只区分文件','只区分目录'],
+		['选手在 NOI 机试过程中是否禁止使用网络：是','否',`只有${SIYUAN}可以`,'使用前需向监考人员举手示意'],
+		['为程序 my.c 创建一个备份 myc.bak 时，使用的命令是：cp my.c myc.bak','he my.c my.bak','mv -c my.bak my.c','copy my.c my.bak'],
+		['调试程序的方法有：单步调试、使用 print 类语句打印中间结果、读源代码','向监考人员求助',`膜拜${SIYUAN}以寻求帮助`],
+		['在考试过程中，如果出现系统死机或者崩溃现象，选手应当采取的措施是：举手示意监考人员处理','关机重启',`向${SIYUAN}祈祷`,'使用旁边的电脑'],
+		['提交的答案程序中如果包含 NOI 考试明确禁止使用的代码，后果是：本题成绩以 0 分计算','本场比赛成绩以 0 分计算','受到禁赛处罚','以评测机分数为准'],
+		['对评测结果有疑义，需要申请复评，则：提出书面申请；经领队、科学委员会主席签字确认后，提交至评测人员','在调整程序之后',`在膜拜${SIYUAN}之后`],
+		['复评成绩较原始成绩有变化，则：以复评成绩为准','以两次最高分为准','由评测人员确定','复评成绩无效'],
+		['Pascal 中 integer 和 long integer 类型的长度和编译选项是否有关系：有关系','没有关系','因人而异','只有 integer 长度和编译选项有关系'],
+		['NOI 考试对 C++ 语言模板的使用有限制吗？没有','有','禁止使用 <code>bits/stdc++.h</code>','大括号不能换行'],
+		['NOI 考试对 PASCAL 语言的使用有限制吗？有','没有','因人而异','视情况而定'],
+		['名为 FILE 的文件和名为 File 的文件在 Linux 系统中被认为是：不同的文件','相同的文件','冲突的文件','有相同文件名的文件'],
+		['目录 DIRECT 和目录 Direct 在 Linux 系统中被认为是：不同的目录','相同的目录','冲突的目录','有相同名称的目录'],
+		['在 NOI 正式考试中如何登录自己的比赛用机：使用考前工作人员下发的账户及密码',`使用膜拜${SIYUAN}的账户及密码`,'使用试机时使用的账户及密码','使用考试开始时公布的账户及密码'],
+		['如果考试分多日进行，那么选手的考试账户和口令：由工作人员在每场考试开始前下发','在第一场考试前统一下发','在试机时统一下发','考试开始前公示于 NOI 官网上'],
+		['考试结束后，应如何处理密码条：保存好密码条，用于复测','保存好密码条，用于下一场考试','销毁密码条，避免密码泄露','保存好密码条，用于证明成绩'],
+		['选手答案文件保存的目录是：选手目录下和考题名称符合的目录','选手目录下和考题编号符合的目录','根目录下和考题名称符合的目录','根目录下和考题编号符合的目录'],
+		['选手答案的文件名要求是：和试卷的题目摘要中所示文件名一致','和试卷的题目摘要中题目的英文名称一致','和试卷的题目摘要中输出文件名一致','和试卷的题目摘要中的题目编号一致'],
+		['选手答案的文件名大小写错误，成绩会怎样：0 分','成绩不变','取消比赛资格','需要提出书面申请；经领队、科学委员会主席签字确认后，提交至评测人员，改正文件名'],
+		['选手提交的源代码文件名是否有特殊要求：源程序文件名由试题名称缩写加后缀构成，试题名称缩写及后缀一律使用小写','没有特殊要求','源程序文件名由试题名称缩写加后缀构成，试题名称缩写及后缀一律使用大写','源程序文件名由试题名称缩写加后缀构成，试题名称缩写使用大写，后缀使用小写'],
+		['在 NOI 考试中，Pascal 源文件的扩展名规定为：pas','cpp','pac','pascal'],
+		['在 NOI 考试中，C 源文件的扩展名规定为：c','C','cpp','ｃ'],
+		['在 NOI 考试中，C++ 源文件的扩展名规定为：cpp','CPP','c++','cpq'],
+		['发现鼠标或其他硬件设备有问题，选手可以：请工作人员更换','在复评时申请加分','使用自带的设备','使用旁边机器的设备'],
+		['对试题理解有问题，选手可以：举手求助','将错就错',`膜拜${SIYUAN}`,'谨慎猜测'],
+		['考试结束后选手需要：迅速离开','留在考场内等待复评','等待工作人员收取完毕，有序离开考场','关闭机器电源并离开'],
+		['复评结束后是否还能提交复评申请：不能','能','只能在结果公布前提交','需要领队、科学委员会主席签字确认'],
+		['测试点时间限制的含义是指：题目允许程序运行所占用的用户时间总和的上限值','题目允许程序运行所占用的系统时间总和的上限值','题目允许程序运行所占用的内核时间总和的上限值','题目允许程序运行所占用的计算时间总和的上限值'],
+		['什么情况下选手可以申请延长考试时间：机器出现故障，并由工作人员确认和记录','选手程序出现致命错误','选手丢失密码条','选手因故障自行重启机器'],
+		['考试中选手自行重新启动机器，能否获得加时？不能','能','因人而异','视情况而定'],
+		['草稿纸用完了，如何处理：举手向监考人员求助','使用自带的草稿纸','直接将草稿打在桌面上',`膜拜${SIYUAN}`],
+		['水喝完了，如何处理：举手向监考人员再要一瓶','到饮水机处自行灌水','渴着','从其他选手处得到水瓶'],
+		[`${SIYUAN}觉得考试太简单，能提前离开吗？能`,'不能','将题目全部完成方可离场',`只有${SIYUAN}能提前离场`],
+		[`${SIYUAN}离开考场后，发现有个题可以吊打标算，能回去再改吗？不能`,'能','向监考人员说明情况后可返回考场','向科学委员会提交书面申请并通过后可返回考场'],
+		['考试中机器突然没响应了，如何处理？举手向监考人员求助','自行处理','视情况而定','举手向监考人员求助，并承担总成绩扣分的惩罚'],
+		['考试中发现登录名和密码的单子丢了，如何处理？向工作人员求助','无法参加考试','向工作人员求助，并承担罚时惩罚','自行处理'],
+		['复评的时候忘记登录名和密码了，如何处理？向工作人员求助','无法进行复评','向工作人员求助，并承担罚时惩罚','自行处理'],
+		['在监考人员宣布 NOI 机试开始之前，是否允许选手登录系统和翻阅试卷？否','是','在准备工作完成后可以','视情况而定'],
+		['在 NOI 上机考试中，是否允许选手私自重新启动计算机？否','是','在机器出现问题时可以','在考试开始前可以'],
+		['在 NOI 系列考试中，如果由于文件名不正确导致被判 0 分，提出复评请求，会被接受吗？不会','会','因人而异','视情况而定'],
+		['在 NOI 系列考试中，如果由于文件目录名不正确导致被判 0 分，提出复评请求，会被接受吗？不会','会','因人而异','视情况而定'],
+		['在 NOI 系列考试中，如果由于文件保存路径不正确导致被判 0 分，提出复评请求，会被接受吗？不会','会','因人而异','视情况而定'],
+		['选手可以不使用 IDE 环境编辑程序源代码吗？可以','不可以','只有高手可以','可以，但需承担总成绩扣分的惩罚'],
+		['选手回答填空题，提交的答案中可以包含引号吗？不可以','可以','因人而异','视情况而定'],
+		['选手程序在某测试点上的运行时间仅比时限多 0.005 秒，算不算超时？算','不算','因人而异','视情况而定'],
+		['在 NOI 上机考试中，允许选手使用的编程语言包括：C、C++、Pascal','Python','Java'],
+		['NOI 比赛的题目类型有：非交互式程序题、交互式程序题、答案提交题','交互式答案提交题'],
+		['选手比赛中提交的有效文件类型有：答案文件、源程序','可执行文件','高级程序'],
+		['选手提交的程序不得进行的操作包括：试图访问网络、使用 fork 或其它线程/进程生成函数、打开或创建题目规定的输入/输出文件之外的其它文件、运行其它程序','重定向标准输入输出','进行大量计算'],
+		['以修改过的程序或答案为依据的申诉是否会被受理：否','是','因人而异','视情况而定'],
+		['没有复测结果支持的申诉是否会被受理：否','是','因人而异','视情况而定'],
+		['超过申诉时间的申诉是否会被受理：否','是','因人而异','视情况而定'],
+		['对评测结果中的超时有异议，且复测结果的运行时间与题目时间限制之差小于题目时间限制5％的申诉是否会被受理：否','是','因人而异','视情况而定'],
+		['遇到下列哪些情况可以向工作人员申请加时补偿：计算机硬件故障、操作系统死机','程序出现错误','编辑器配置错误'],
+		['考试时若遇到计算机硬件故障或操作系统死机，应如何处理？举手向工作人员求助','自行处理','举手向监考人员求助，并承担比赛时间减少惩罚','举手向监考人员求助，并承担总成绩扣分的惩罚'],
+		['选手进入考场可以携带的物品是：笔、手表','草稿纸','U 盘'],
+		['选手进入考场不可以携带的物品是：纸、U 盘、手机','笔','手表'],
+		['竞赛组织者将在竞赛场地为选手提供的物品是：草稿纸、饮用水、食品','笔'],
 
-			['一个完整的计算机系统应包括：硬件系统、软件系统','文件系统','编译器'],
-			['目前微型计算机中采用的逻辑组件是：大规模集成电路、超大规模集成电路','比特','晶体管'],
-			['软件与程序的区别是：软件是程序以及开发、使用和维护所需要的所有文档的总称；程序是软件的一部分','程序是软件以及开发、使用和维护所需要的所有文档的总称','软件是程序的一部分','软件是程序的别名'],
-			['IT 表示：信息技术','工业技术','电脑技术','膜拜{Siyuan}技术'],
-			['计算机中央处理器简称为：CPU','GPU','CMP','RAM'],
-			['计算机内存储器的作用是：用来存放当前 CPU 正在使用的程序和数据','管理计算机的硬件资源和软件资源','快速执行大规模并行计算','用于控制、管理和存储指令执行'],
-			['用来全面管理计算机硬件和软件资源的软件叫：操作系统','Linux','文件系统','硬件系统'],
-			['LAN 是指：局域网','广域网','互联网','长距网'],
-			['在微机中，bit 的中文含义是：二进制位','字符','三进制位','字节'],
-			['计算机所能辨认的最小信息单位是：位','字符','字节','行'],
-			['ASCII 的含义是：美国信息交换标准代码','国际基础字符集二代','标准字符信息交换代码','ASC2 字符编码'],
-			['在计算机术语中经常用 RAM 表示：随机存取存储器','迭代存取存储器','只读存储器','顺序存取存储器'],
-			['RAM 存储器在断电后，其中的数据会变化吗？会','不会','看断电时长','视情况而定'],
-			['ROM 存储器在断电后，其中的数据会变化吗？不会','会','看断电时长','视情况而定'],
-			['现代计算机所应用的存储程序原理是谁提出的？冯·诺依曼','艾伦·麦席森·图灵','{Siyuan}','Gennady Korotkevich'],
-			['计算机内所有的信息都是以什么形式表示的？二进制数码','文件','补码','机器语言'],
-			['计算机直接识别和执行的语言是：机器语言','汇编语言','C','逻辑电路'],
-			['Linux 是一个 ____ 的操作系统，意思是源码可以免费获得：开源','开放','公开','公有'],
-			['NOI 的中文意思是：全国信息学奥林匹克竞赛','全国青少年信息学奥林匹克竞赛','全国青少年奥林匹克竞赛','全国信息技术奥林匹克竞赛'],
-			['字长为 32bit 的计算机,表示它能作为一个整体进行传送的数据长度可为几个字节？4','1','8','32'],
-			['一个字节由相邻的 ____ 个二进制位组成：8','1','32','4'],
-			['二进制数 10 化为十进制数是：2','10','1010','4'],
-			['与十六进制数（AB）等值的二进数是：10101011','10011010','10111100','10101001'],
-			['Linux 中查看当前路径使用的命令是：pwd','ps','ls','cd'],
-			['在 Linux 下建立目录使用的命令是：mkdir','touch -r','ls','cd'],
-			['NOI 比赛中提供的 Pascal IDE 环境除了 GUIDE 之外，还有：Lazarus','Anjuta','GUIDE','Gedit'],
-			['NOI 比赛中提供的 C++ IDE 环境除了 GUIDE 之外，还有：Anjuta','Lazarus','GUIDE','Gedit'],
-			['NOI 比赛中提供的编程工具除了 GUIDE、Lazarus、Anjuta 等 IDE 环境之外，还可以使用的编程工具有：Vi 、Gedit','sublime','VSCode'],
-			['NOI 比赛每场上机考试的比赛时间是 ____ 小时：5','3','4','3.5'],
-			['首届 NOI 是 ____ 年举办的：1984','1983','1926','1938','2000','1993'],
-			['今年是第几届 NOI？36','31','34','35','37'],
-			['今年是第几届 IOI？31','30','35','36','37'],
-			['第 12 届 IOI 是 ____ 年在北京举办的：2000','1984','1995','1999'],
+		['一个完整的计算机系统应包括：硬件系统、软件系统','文件系统','编译器'],
+		['目前微型计算机中采用的逻辑组件是：大规模集成电路、超大规模集成电路','比特','晶体管'],
+		['软件与程序的区别是：软件是程序以及开发、使用和维护所需要的所有文档的总称；程序是软件的一部分','程序是软件以及开发、使用和维护所需要的所有文档的总称','软件是程序的一部分','软件是程序的别名'],
+		['IT 表示：信息技术','工业技术','电脑技术',`膜拜${SIYUAN}技术`],
+		['计算机中央处理器简称为：CPU','GPU','CMP','RAM'],
+		['计算机内存储器的作用是：用来存放当前 CPU 正在使用的程序和数据','管理计算机的硬件资源和软件资源','快速执行大规模并行计算','用于控制、管理和存储指令执行'],
+		['用来全面管理计算机硬件和软件资源的软件叫：操作系统','Linux','文件系统','硬件系统'],
+		['LAN 是指：局域网','广域网','互联网','长距网'],
+		['在微机中，bit 的中文含义是：二进制位','字符','三进制位','字节'],
+		['计算机所能辨认的最小信息单位是：位','字符','字节','行'],
+		['ASCII 的含义是：美国信息交换标准代码','国际基础字符集二代','标准字符信息交换代码','ASC2 字符编码'],
+		['在计算机术语中经常用 RAM 表示：随机存取存储器','迭代存取存储器','只读存储器','顺序存取存储器'],
+		['RAM 存储器在断电后，其中的数据会变化吗？会','不会','看断电时长','视情况而定'],
+		['ROM 存储器在断电后，其中的数据会变化吗？不会','会','看断电时长','视情况而定'],
+		['现代计算机所应用的存储程序原理是谁提出的？冯·诺依曼','艾伦·麦席森·图灵',`${SIYUAN}`,'Gennady Korotkevich'],
+		['计算机内所有的信息都是以什么形式表示的？二进制数码','文件','补码','机器语言'],
+		['计算机直接识别和执行的语言是：机器语言','汇编语言','C','逻辑电路'],
+		['Linux 是一个 ____ 的操作系统，意思是源码可以免费获得：开源','开放','公开','公有'],
+		['NOI 的中文意思是：全国信息学奥林匹克竞赛','全国青少年信息学奥林匹克竞赛','全国青少年奥林匹克竞赛','全国信息技术奥林匹克竞赛'],
+		['字长为 32bit 的计算机,表示它能作为一个整体进行传送的数据长度可为几个字节？4','1','8','32'],
+		['一个字节由相邻的 ____ 个二进制位组成：8','1','32','4'],
+		['二进制数 10 化为十进制数是：2','10','1010','4'],
+		['与十六进制数（AB）等值的二进数是：10101011','10011010','10111100','10101001'],
+		['Linux 中查看当前路径使用的命令是：pwd','ps','ls','cd'],
+		['在 Linux 下建立目录使用的命令是：mkdir','touch -r','ls','cd'],
+		['NOI 比赛中提供的 Pascal IDE 环境除了 GUIDE 之外，还有：Lazarus','Anjuta','GUIDE','Gedit'],
+		['NOI 比赛中提供的 C++ IDE 环境除了 GUIDE 之外，还有：Anjuta','Lazarus','GUIDE','Gedit'],
+		['NOI 比赛中提供的编程工具除了 GUIDE、Lazarus、Anjuta 等 IDE 环境之外，还可以使用的编程工具有：Vi 、Gedit','sublime','VSCode'],
+		['NOI 比赛每场上机考试的比赛时间是 ____ 小时：5','3','4','3.5'],
+		['首届 NOI 是 ____ 年举办的：1984','1983','1926','1938','2000','1993'],
+		['今年是第几届 NOI？36','31','34','35','37'],
+		['今年是第几届 IOI？31','30','35','36','37'],
+		['第 12 届 IOI 是 ____ 年在北京举办的：2000','1984','1995','1999'],
 
-			['以下链接中指向 OJ 的有：luogu.org；uoj.ac；loj.ac；acm.hdu.edu.cn；lydsy.com；joyoi.cn；vijos.org','github.com','lmoliver.github.io/blog','lmoliver.github.io/mosiyuan','slay.one','generals.io','agar.io','lydsy.online','orzsiyuan.com','lmoliver.github.io/jrneoj','m2oj.com','zhihu.com/?target=uoj.ac'],
-			['如果使用 Kuai 排进行有序序列合并，归并排序的时间复杂度是：O(n(log n)^2)','O(n log n)','O(log n)','O((log n)^2)'],
-		].map(a=>makeProblem(...a)),
-	];
+		['以下链接中指向 OJ 的有：luogu.org；uoj.ac；loj.ac；acm.hdu.edu.cn；lydsy.com；joyoi.cn；vijos.org','github.com','lmoliver.github.io/blog','lmoliver.github.io/mosiyuan','slay.one','generals.io','agar.io','lydsy.online','orzsiyuan.com','lmoliver.github.io/jrneoj','m2oj.com','zhihu.com/?target=uoj.ac'],
+		['如果使用 Kuai 排进行有序序列合并，归并排序的时间复杂度是：O(n(log n)^2)','O(n log n)','O(log n)','O((log n)^2)'],
+	].map(a=>makeProblem(...a));
 
 	const SAVE_ITEMS={
 		moValue:{
-			name:'膜拜次数',
-			format:'VALUE次膜拜',
+			name:`膜拜次数`,
+			format:`VALUE次膜拜`,
 		},
 		moCount:{
-			name:'点击次数',
-			format:'VALUE次点击',
+			name:`点击次数`,
+			format:`VALUE次点击`,
 		},
 		advancedMoLevel:{
-			name:'真诚膜拜等级',
-			format:'真诚膜拜Lv.VALUE',
+			name:`真诚膜拜等级`,
+			format:`真诚膜拜Lv.VALUE`,
 		},
 		moers:{
-			name:'信徒',
-			format:'VALUE位信徒',
+			name:`信徒`,
+			format:`VALUE位信徒`,
 		},
 		churchs:{
-			name:'教堂',
-			format:'VALUE座教堂',
+			name:`教堂`,
+			format:`VALUE座教堂`,
 		},
 		XY:{
-			name:'信仰',
-			format:'VALUE信仰',
+			name:`信仰`,
+			format:`VALUE信仰`,
 		},
 		books:{
-			name:'经书',
-			format:'VALUE本经书',
+			name:`经书`,
+			format:`VALUE本经书`,
 		},
 		spLevel:{
-			name:'传教等级',
-			format:'传教 Lv.{VALUE}',
+			name:`传教等级`,
+			format:`传教 Lv.VALUE`,
 		},
 		sping:{
-			name:'传教中',
-			format:'{VALUE}',
+			name:`传教中`,
+			format:`VALUE`,
 		},
 		spCombo:{
-			name:'连续正确数',
-			format:'Combo : {VALUE}',
+			name:`连续正确数`,
+			format:`Combo : VALUE`,
 			default:0,
 		},
 		spingProblem:{
-			name:'正在回答的问题',
-			format:'{VALUE}',
+			name:`正在回答的问题`,
+			format:`VALUE`,
 			default:{
 				pid:-1,
 				chooses:[],
 			},
 		},
 		temple:{
-			name:'遗迹',
-			format:'已探索VALUE个遗迹',
+			name:`遗迹`,
+			format:`已探索VALUE个遗迹`,
 		},
 		hugeStone:{
-			name:'巨石',
-			format:'VALUE块巨石',
+			name:`巨石`,
+			format:`VALUE块巨石`,
 		},
 		fazhen:{
-			name:'法阵',
-			format:'VALUE座法阵',
+			name:`法阵`,
+			format:`VALUE座法阵`,
 		},
 		knowledgeBook:{
-			name:'知识之书',
+			name:`知识之书`,
 			format:'VALUE本知识之书'
 		},
 		crystal:{
-			name:'水晶',
-			format:'VALUE水晶',
+			name:`水晶`,
+			format:`VALUE水晶`,
 		},
 		wisdomLevel:{
-			name:'智慧',
-			format:'智慧Lv.VALUE',
+			name:`智慧`,
+			format:`智慧Lv.VALUE`,
 		},
 		mysteryLevel:{
-			name:'奥秘',
-			format:'奥秘Lv.VALUE',
+			name:`奥秘`,
+			format:`奥秘Lv.VALUE`,
 		},
 		natureLevel:{
-			name:'本质',
-			format:'本质Lv.VALUE',
+			name:`本质`,
+			format:`本质Lv.VALUE`,
 		},
 		truthLevel:{
-			name:'真理',
-			format:'真理Lv.VALUE',
+			name:`真理`,
+			format:`真理Lv.VALUE`,
 		},
 		len:{
-			name:'透镜',
-			format:'VALUE枚透镜',
+			name:`透镜`,
+			format:`VALUE枚透镜`,
 		},
 		gem:{
-			name:'宝石',
-			format:'VALUE枚宝石',
+			name:`宝石`,
+			format:`VALUE枚宝石`,
 		},
 		magicStone:{
-			name:'魔法石',
-			format:'VALUE枚魔法石',
+			name:`魔法石`,
+			format:`VALUE枚魔法石`,
 		},
 		altar:{
-			name:'神坛',
-			format:'VALUE座神坛',
+			name:`神坛`,
+			format:`VALUE座神坛`,
 		},
 		theology:{
-			name:'神学',
-			format:'VALUE神学',
+			name:`神学`,
+			format:`VALUE神学`,
 		},
 		magician:{
-			name:'魔法师',
-			format:'VALUE位魔法师',
+			name:`魔法师`,
+			format:`VALUE位魔法师`,
 		},
 		magic:{
-			name:'魔力',
-			format:'VALUE魔力',
+			name:`魔力`,
+			format:`VALUE魔力`,
 		},
 		scientist:{
-			name:'科学家',
-			format:'VALUE名科学家',
+			name:`科学家`,
+			format:`VALUE名科学家`,
 		},
 		science:{
-			name:'研究',
-			format:'VALUE研究',
+			name:`研究`,
+			format:`VALUE研究`,
 		},
 		truthUpgradeHistory:{
-			name:'升级真理历史',
-			format:'...',
+			name:`升级真理历史`,
+			format:`...`,
 			default:[],
 		},
 		truthUpgradeStage:{
-			name:'升级真理阶段',
-			format:'第VALUE阶段',
+			name:`升级真理阶段`,
+			format:`第VALUE阶段`,
 		},
 		truthUpgradeAttempt:{
-			name:'升级真理尝试次数',
-			format:'第VALUE次尝试',
+			name:`升级真理尝试次数`,
+			format:`第VALUE次尝试`,
 		},
 		truthUpgradeGemNeed:{
-			name:'升级真理所需宝石',
-			format:'需要VALUE宝石',
+			name:`升级真理所需宝石`,
+			format:`需要VALUE宝石`,
 		},
 		truthUpgradeMagicStoneNeed:{
-			name:'升级真理所需魔法石',
-			format:'需要VALUE魔法石',
+			name:`升级真理所需魔法石`,
+			format:`需要VALUE魔法石`,
 		},
 		truthUpgradeLenNeed:{
-			name:'升级真理所需透镜',
-			format:'需要VALUE透镜',
+			name:`升级真理所需透镜`,
+			format:`需要VALUE透镜`,
 		},
 		tech:{
-			name:'科技',
-			format:'...',
+			name:`科技`,
+			format:`...`,
 			default:{},
 		},
 		devotion:{
-			name:'虔诚感应强度',
-			format:'VALUE虔诚感应强度',
+			name:`虔诚感应强度`,
+			format:`VALUE虔诚感应强度`,
 		},
 		light:{
-			name:'亮度',
-			format:'VALUE亮度',
+			name:`亮度`,
+			format:`VALUE亮度`,
 			default:1,
 		},
 		elementTower:{
-			name:'元素塔',
-			format:'VALUE座元素塔',
+			name:`元素塔`,
+			format:`VALUE座元素塔`,
 		},
 		element:{
-			name:'元素',
-			format:'...',
+			name:`元素`,
+			format:`...`,
 			default:{},
 		},
 		elementOwned:{
-			name:'已拥有元素',
-			format:'...',
+			name:`已拥有元素`,
+			format:`...`,
 			default:{},
 		},
 		lastTime:{
-			name:'上次运行时间',
-			format:'<VALUE>',
+			name:`上次运行时间`,
+			format:`<VALUE>`,
 			default:Date.now(),
 		},
 		rngSeed:{
-			name:'随机数生成器种子',
-			format:'...',
+			name:`随机数生成器种子`,
+			format:`...`,
 			default:{},
 		},
 		defBuildings:{
-			name:'阵地建筑',
-			format:'...',
+			name:`阵地建筑`,
+			format:`...`,
 			default:[],
 		},
 		enemy:{
-			name:'敌人',
-			format:'...',
+			name:`敌人`,
+			format:`...`,
 			default:{
 				current:[],
 				arr:[],
@@ -566,63 +564,63 @@
 			},
 		},
 		warMind:{
-			name:'战意感应强度',
-			format:'VALUE战意感应强度',
+			name:`战意感应强度`,
+			format:`VALUE战意感应强度`,
 			default:0,
 		},
 		warLevel:{
-			name:'战争等级',
-			format:'VALUE',
+			name:`战争等级`,
+			format:`VALUE`,
 			default:0,
 		},
 		enemyProgress:{
-			name:'产敌进程',
-			format:'VALUE',
+			name:`产敌进程`,
+			format:`VALUE`,
 			default:0,
 		},
 		debugging:{
-			name:'调试模式标识',
-			format:'VALUE',
+			name:`调试模式标识`,
+			format:`VALUE`,
 			default:false,
 		},
 		// magicSpecialty:{
-		// 	name:'魔法特产',
-		// 	format:'VALUE',
+		// 	name:`魔法特产`,
+		// 	format:`VALUE`,
 		// 	default:Math.floor(Math.random()*4),
 		// },
 		version:{
-			name:'版本',
-			format:'VALUE版本',
+			name:`版本`,
+			format:`VALUE版本`,
 			default:VERSION,
 		},
 		// adventure:{
-		// 	name:'冒险',
-		// 	format:'...',
+		// 	name:`冒险`,
+		// 	format:`...`,
 		// 	default:false,
 		// },
 		magicTreeSeed:{
-			name:'魔灵树树苗',
-			format:'VALUE株魔灵树树苗',
+			name:`魔灵树树苗`,
+			format:`VALUE株魔灵树树苗`,
 			default:0,
 		},
 		magicTree:{
-			name:'魔灵树',
-			format:'VALUE株魔灵树',
+			name:`魔灵树`,
+			format:`VALUE株魔灵树`,
 			default:0,
 		},
 		timeIDC:{
-			name:'时间感应强度',
-			format:'VALUE时间感应强度',
+			name:`时间感应强度`,
+			format:`VALUE时间感应强度`,
 			default:0,
 		},
 		worldSpeed:{
-			name:'世界速度',
-			format:'VALUE世界速度',
+			name:`世界速度`,
+			format:`VALUE世界速度`,
 			default:1,
 		},
 		achievements:{
-			name:'成就',
-			format:'...',
+			name:`成就`,
+			format:`...`,
 			default:{},
 		},
 	};
@@ -630,8 +628,8 @@
 	const TECH={
 		1:{
 			optics:{
-				name:'光学',
-				description:'水晶的获取使光学成为最先被发展的科学学科。',
+				name:`光学`,
+				description:`水晶的获取使光学成为最先被发展的科学学科。`,
 				require:[],
 				cost(lv){
 					return [
@@ -641,24 +639,24 @@
 				},
 			},
 			focus:{
-				name:'聚焦',
-				description:'用水晶打磨成镜片，利用阳光增幅信仰获取。',
+				name:`聚焦`,
+				description:`用水晶打磨成镜片，利用阳光增幅信仰获取。`,
 				require:[['optics',1]],
 				cost(lv){
 					return [['crystal',(Math.pow(lv,2)+1)*100]];
 				},
 			},
 			magnifier:{
-				name:'放大镜',
-				description:'让你的魔法师不用超凡的眼力也能弄清魔法石内部的魔力结构。',
+				name:`放大镜`,
+				description:`让你的魔法师不用超凡的眼力也能弄清魔法石内部的魔力结构。`,
 				require:[['optics',2]],
 				cost(lv){
 					return [['crystal',(Math.pow(lv,1.5)+1)*75]];
 				},
 			},
 			glasses:{
-				name:'眼镜',
-				description:'黑色的框架配上镜片，足以使老龄科学家与神学家看得更清楚。',
+				name:`眼镜`,
+				description:`黑色的框架配上镜片，足以使老龄科学家与神学家看得更清楚。`,
 				require:[['optics',3]],
 				cost(lv){
 					return [
@@ -669,8 +667,8 @@
 				}
 			},
 			xuanxue:{
-				name:'玄学',
-				description:'经过她手里的随机事件便受她掌控，但没被她看到的呢？{!}玄学便是为了探究这个问题而生。',
+				name:`玄学`,
+				description:`经过她手里的随机事件便受她掌控，但没被她看到的呢？玄学便是为了探究这个问题而生。`,
 				require:[],
 				cost(lv){
 					return [
@@ -680,8 +678,8 @@
 				},
 			},
 			dunai:{
-				name:'毒奶',
-				description:'通过反向毒奶可以减少实验时不该产生的误差，进而减少水晶消耗。',
+				name:`毒奶`,
+				description:`通过反向毒奶可以减少实验时不该产生的误差，进而减少水晶消耗。`,
 				require:[['xuanxue',3]],
 				cost(lv){
 					return [
@@ -691,16 +689,16 @@
 				},
 			},
 			tidy:{
-				name:'整洁',
-				description:'洗个澡，把衣服穿戴整齐，往往运气会更好！{!}效果与真诚膜拜等级的质因数分解中 2 的数量有关。',
+				name:`整洁`,
+				description:`洗个澡，把衣服穿戴整齐，往往运气会更好！效果与真诚膜拜等级的质因数分解中 2 的数量有关。`,
 				require:[['xuanxue',4]],
 				cost(lv){
 					return [['crystal',50*(lv+1)**2]];
 				},
 			},
 			spell:{
-				name:'法术',
-				description:'使用不了法术，还能称之为魔法吗？',
+				name:`法术`,
+				description:`使用不了法术，还能称之为魔法吗？`,
 				require:[],
 				cost(lv){
 					return [
@@ -710,16 +708,16 @@
 				},
 			},
 			spellWater:{
-				name:'流水术',
-				description:'江河湖海，皆在掌控。',
+				name:`流水术`,
+				description:`江河湖海，皆在掌控。`,
 				require:[['spell',2]],
 				cost(lv){
 					return [['magic',Math.pow(3.5,lv)*100]];
 				}
 			},
 			devotionInduction:{
-				name:'虔诚感应',
-				description:'一束玄妙的魔力丝通向天空，让她知道你正在认真地膜拜她。',
+				name:`虔诚感应`,
+				description:`一束玄妙的魔力丝通向天空，让她知道你正在认真地膜拜她。`,
 				require:[
 					['focus',1],
 					['spell',4],
@@ -734,8 +732,8 @@
 		},
 		2:{
 			pscience:{
-				name:'科普',
-				description:'用一些不科学的小东西反而能唤起孩子们对科学的好奇。',
+				name:`科普`,
+				description:`用一些不科学的小东西反而能唤起孩子们对科学的好奇。`,
 				require:[],
 				cost(lv){
 					return [
@@ -745,8 +743,8 @@
 				},
 			},
 			geometry:{
-				name:'几何学',
-				description:'花纹与光斑启发了人们对图形的思考。',
+				name:`几何学`,
+				description:`花纹与光斑启发了人们对图形的思考。`,
 				require:[
 					['focus',5],
 					['tidy',1],
@@ -756,8 +754,8 @@
 				},
 			},
 			hugeStoneBuilding:{
-				name:'巨石',
-				description:'她是如此之巨，以至于巨石都听从她的号令！',
+				name:`巨石`,
+				description:`她是如此之巨，以至于巨石都听从她的号令！`,
 				require:[['geometry',1]],
 				cost(lv){
 					return [
@@ -767,16 +765,16 @@
 				},
 			},
 			spellWind:{
-				name:'风语术',
-				description:'隐匿于气，交谈于风。',
+				name:`风语术`,
+				description:`隐匿于气，交谈于风。`,
 				require:[['spell',6]],
 				cost(lv){
 					return [['magic',Math.pow(4,lv)*100]];
 				}
 			},
 			spellBird:{
-				name:'御鸟术',
-				description:'与鸟相关？{!}对了一半。{!}这法术确实与麻雀相关……',
+				name:`御鸟术`,
+				description:`与鸟相关？对了一半。这法术确实与麻雀相关……`,
 				require:[
 					['spell',8],
 					['spellWind',3],
@@ -786,8 +784,8 @@
 				}
 			},
 			fazhenBuilding:{
-				name:'法阵',
-				description:'将施法过程描述出来，静态化，就变成了法阵。',
+				name:`法阵`,
+				description:`将施法过程描述出来，静态化，就变成了法阵。`,
 				require:[
 					['geometry',1],
 					['spell',10],
@@ -800,8 +798,8 @@
 				},
 			},
 			fireFazhen:{
-				name:'烈焰阵',
-				description:'燃烧！{!}不过好像没有什么东西该被烧掉呢。',
+				name:`烈焰阵`,
+				description:`燃烧！不过好像没有什么东西该被烧掉呢。`,
 				require:[
 					['geometry',3],
 					['fazhenBuilding',2],
@@ -814,8 +812,8 @@
 				},
 			},
 			explore:{
-				name:'探索',
-				description:'城镇的远处时常有微光传来，那似乎不仅仅是自然的造物……',
+				name:`探索`,
+				description:`城镇的远处时常有微光传来，那似乎不仅仅是自然的造物……`,
 				require:[
 					['fireFazhen',2],
 					['optics',12],
@@ -828,8 +826,8 @@
 				},
 			},
 			warMindInduction:{
-				name:'战意感应',
-				description:'法阵与乌云以红色的光柱连接，让她知道人们渴望战斗。',
+				name:`战意感应`,
+				description:`法阵与乌云以红色的光柱连接，让她知道人们渴望战斗。`,
 				require:[
 					['explore',3],
 					['fireFazhen',5],
@@ -843,8 +841,8 @@
 				},
 			},
 			windFazhen:{
-				name:'疾风阵',
-				description:'强劲的风力加上成块的碎土能使敌人倒退好几步，但也会吹跑正在飞向教堂的鸽子。',
+				name:`疾风阵`,
+				description:`强劲的风力加上成块的碎土能使敌人倒退好几步，但也会吹跑正在飞向教堂的鸽子。`,
 				require:[
 					['explore',3],
 					['fireFazhen',5],
@@ -861,8 +859,8 @@
 		},
 		3:{
 			antiGugu:{
-				name:'驱鸽仪',
-				description:'有人曾说这是真理 III 中的第一个研究。现在看来他说得对。',
+				name:`驱鸽仪`,
+				description:`有人曾说这是真理 III 中的第一个研究。现在看来他说得对。`,
 				require:[['windFazhen',2]],
 				cost(lv){
 					return [
@@ -872,8 +870,8 @@
 				},
 			},
 			blessing:{
-				name:'祝福术',
-				description:'来自她的祝福能让信徒们如获新生。',
+				name:`祝福术`,
+				description:`来自她的祝福能让信徒们如获新生。`,
 				require:[
 					['antiGugu',1],
 					['windFazhen',2],
@@ -887,8 +885,8 @@
 				},
 			},
 			timeInduction:{
-				name:'时间感应',
-				description:'数百双眼睛盯着法阵中幽蓝色的光芒，向她祈求永恒的瞬间。',
+				name:`时间感应`,
+				description:`数百双眼睛盯着法阵中幽蓝色的光芒，向她祈求永恒的瞬间。`,
 				require:[
 					['antiGugu',2],
 					['fazhenBuilding',9],
@@ -902,8 +900,8 @@
 				},
 			},
 			magicTree:{
-				name:'魔灵树',
-				description:'魔灵树的果实天生自带保护魔法，这使这些果实为敌人所觊觎。',
+				name:`魔灵树`,
+				description:`魔灵树的果实天生自带保护魔法，这使这些果实为敌人所觊觎。`,
 				require:[
 					['blessing',10],
 					['fazhenBuilding',10],
@@ -916,8 +914,8 @@
 				},
 			},
 			expedition:{
-				name:'远征',
-				description:'<尚未实装>',
+				name:`远征`,
+				description:`<尚未实装>`,
 				require:[
 					['blessing',12],
 					['magicTree',1],
@@ -938,8 +936,6 @@
 		},
 	};
 
-	const translate=window.translate;
-
 	const TRUTH_UPGRADES={
 		0:{
 			stages:2,
@@ -959,7 +955,7 @@
 				return Math.abs(x-tx)+Math.abs(y-ty)+Math.abs(z-tz);
 			},
 			message(res){
-				return translate('差距:{0}',res);
+				return `差距:${res}`;
 			},
 		},
 		1:{
@@ -980,7 +976,7 @@
 				return Math.round(Math.sqrt((x-tx)**2+(y-ty)**2+(z-tz)**2));
 			},
 			message(res){
-				return translate('距离:{0}',res);
+				return `距离:${res}`;
 			},
 		},
 		2:{
@@ -1003,7 +999,7 @@
 				return c;
 			},
 			message(res){
-				return translate('{0}种材料过多',res);
+				return `${res}种材料过多`;
 			},
 		},
 		3:{
@@ -1027,7 +1023,7 @@
 				return 1+(dx^dy^dz)%9;
 			},
 			message(res){
-				return translate('相位:{0}',res);
+				return `相位:${res}`;
 			},
 		},
 		4:{
@@ -1061,9 +1057,9 @@
 				if(res&2){dd.push('魔法石');}
 				if(res&4){dd.push('透镜');}
 				if(dd.length===3){
-					return translate('所有差距相同');
+					return '所有差距相同';
 				}else{
-					return translate(`${dd.join('、')}差距最大`);
+					return `${dd.join('、')}差距最大`;
 				}
 			},
 		},
@@ -1071,85 +1067,85 @@
 
 	const ELEMENTS={
 		fals:{
-			name:'谬',
-			color:'pink',
-			token:'⋄',
+			name:`谬`,
+			color:`pink`,
+			token:`⋄`,
 		},
 		luan:{
-			name:'乱',
-			color:'fuchsia',
-			token:'▪',
+			name:`乱`,
+			color:`fuchsia`,
+			token:`▪`,
 		},
 		void:{
-			name:'虚',
-			color:'black',
-			token:'☉',
+			name:`虚`,
+			color:`black`,
+			token:`☉`,
 		},
 
 		water:{
-			name:'水',
-			color:'lightblue',
-			token:'α',
+			name:`水`,
+			color:`lightblue`,
+			token:`α`,
 		},
 		fire:{
-			name:'火',
-			color:'orange',
-			token:'β',
+			name:`火`,
+			color:`orange`,
+			token:`β`,
 		},
 		earth:{
-			name:'土',
-			color:'brown',
-			token:'γ',
+			name:`土`,
+			color:`brown`,
+			token:`γ`,
 		},
 		wind:{
-			name:'风',
-			color:'#dddd00',
-			token:'δ',
+			name:`风`,
+			color:`#dddd00`,
+			token:`δ`,
 		},
 
 		magic:{
-			name:'魔',
-			color:'purple',
-			token:'λ',
+			name:`魔`,
+			color:`purple`,
+			token:`λ`,
 		},
 
 		ice:{
-			name:'冰',
-			color:'skyblue',
-			token:'I',
+			name:`冰`,
+			color:`skyblue`,
+			token:`I`,
 		},
 
 		air:{
-			name:'气',
-			color:'#ccccff',
-			token:'ε',
+			name:`气`,
+			color:`#ccccff`,
+			token:`ε`,
 		},
 		rain:{
-			name:'雨',
-			color:'blue',
-			token:'ζ',
+			name:`雨`,
+			color:`blue`,
+			token:`ζ`,
 		},
 		wood:{
-			name:'木',
-			color:'#44dd00',
-			token:'η',
+			name:`木`,
+			color:`#44dd00`,
+			token:`η`,
 		},
 		coal:{
-			name:'炭',
-			color:'#886644',
-			token:'θ',
+			name:`炭`,
+			color:`#886644`,
+			token:`θ`,
 		},
 	};
 
 	const BASIC_ELEMENTS=['water','fire','earth','wind'];
 
 	const ENEMY_ABBR=[
-		'attack',
-		'defendx',
-		'defendy',
-		'defendz',
-		'speed',
-		'health',
+		`attack`,
+		`defendx`,
+		`defendy`,
+		`defendz`,
+		`speed`,
+		`health`,
 	];
 
 	function damage(e,tp,val,st){
@@ -1158,7 +1154,7 @@
 
 	const DEFENSE_BUILDING={
 		waterArrowTower:{
-			name:'水箭塔',
+			name:`水箭塔`,
 			description:['0.1魔法伤害(0.8s冷却)','0.01水元素/秒'],
 			require:{
 				tech:[['spellWater',3]],
@@ -1183,7 +1179,7 @@
 			},
 		},
 		fireTrap:{
-			name:'火焰陷阱',
+			name:`火焰陷阱`,
 			description:['0.3物理伤害/秒','0.01火元素/秒'],
 			require:{
 				tech:[['fireFazhen',3]],
@@ -1206,7 +1202,7 @@
 			},
 		},
 		windFazhen:{
-			name:'疾风阵',
+			name:`疾风阵`,
 			description:['0.15击退(1.0s冷却)','土、风元素各0.01/秒'],
 			require:{
 				tech:[
@@ -1214,8 +1210,8 @@
 					['spellWind',5],
 				],
 				element:[
-					'wind',
-					'earth',
+					`wind`,
+					`earth`,
 				],
 			},
 			runCost:[
@@ -1245,7 +1241,7 @@
 			},
 		},
 		birdFazhen:{
-			name:'咕咕阵',
+			name:`咕咕阵`,
 			description:['[1.0/(距离+2)]精神伤害/秒','土、风元素各0.02/秒'],
 			require:{
 				tech:[
@@ -1253,8 +1249,8 @@
 					['spellBird',5],
 				],
 				element:[
-					'wind',
-					'earth',
+					`wind`,
+					`earth`,
 				],
 			},
 			runCost:[
@@ -1278,7 +1274,7 @@
 			},
 		},
 		pureMagicTower:{
-			name:'纯魔巨炮',
+			name:`纯魔巨炮`,
 			description:['15.0魔法伤害(40~60s冷却)','水、火、土、风、魔元素各0.01/秒'],
 			require:{
 				tech:[['fazhenBuilding',5]],
@@ -1330,47 +1326,47 @@
 
 	const DB_PROI={
 		0:{
-			name:'最早出现',
+			name:`最早出现`,
 			priority:(_e,id)=>id,
 		},
 		1:{
-			name:'血量最少',
+			name:`血量最少`,
 			priority:(e)=>-e.abbr.health,
 		},
 		2:{
-			name:'距离最近',
+			name:`距离最近`,
 			priority:(e)=>-e.pos,
 		},
 		3:{
-			name:'功勋最高',
+			name:`功勋最高`,
 			priority:(e)=>e.score,
 		},
 		4:{
-			name:'攻击最高',
+			name:`攻击最高`,
 			priority:(e)=>e.abbr.attack,
 		},
 		5:{
-			name:'速度最快',
+			name:`速度最快`,
 			priority:(e)=>e.abbr.speed,
 		},
 		6:{
-			name:'意志最低',
+			name:`意志最低`,
 			priority:(e)=>-e.abbr.defendx,
 		},
 		7:{
-			name:'符咒最低',
+			name:`符咒最低`,
 			priority:(e)=>-e.abbr.defendy,
 		},
 		8:{
-			name:'护甲最低',
+			name:`护甲最低`,
 			priority:(e)=>-e.abbr.defendz,
 		},
 		9:{
-			name:'实力最强',
+			name:`实力最强`,
 			priority:(e)=>e.strength,
 		},
 		100:{
-			name:'不攻击',
+			name:`不攻击`,
 			priority:()=>-Infinity,
 		},
 	};
@@ -1384,11 +1380,11 @@
 	const GRID_SYMBOLS={
 		[undefined]:'',
 		['']:'',
-		1:'1',
-		2:'2',
-		3:'3',
-		4:'4',
-		wave:'~',
+		1:`1`,
+		2:`2`,
+		3:`3`,
+		4:`4`,
+		wave:`~`,
 	};
 	const simpleTile=()=>({bg:'white',color:'white',t:''});
 	const colorCap=(x)=>Math.max(0,Math.min(255,x));
@@ -1396,58 +1392,58 @@
 	const genColor=(r,g,b)=>`rgb(${colorCap(r+COLOR_MODITY*2*Math.random()-COLOR_MODITY)},${colorCap(g+COLOR_MODITY*2*Math.random()-COLOR_MODITY)},${colorCap(b+COLOR_MODITY*2*Math.random()-COLOR_MODITY)})`;
 	const ENV={
 		0:{
-			name:'迷雾浮岛',
-			specialElement:'air',
+			name:`迷雾浮岛`,
+			specialElement:`air`,
 			civilization:{
-				name:'虚空异形',
+				name:`虚空异形`,
 			},
 			genTile(depth){
 				return Math.random()<magic3(depth)?{
 					bg:genColor(128,128,128),
-					color:'black',
-					t:'1',
+					color:`black`,
+					t:`1`,
 				}:simpleTile();
 			},
 		},
 		1:{
-			name:'暗礁海洋',
-			specialElement:'rain',
+			name:`暗礁海洋`,
+			specialElement:`rain`,
 			civilization:{
-				name:'深海鱼人',
+				name:`深海鱼人`,
 			},
 			genTile(depth){
 				return Math.random()<magic3(depth)?{
 					bg:genColor(0,0,255),
-					color:'black',
-					t:'wave',
+					color:`black`,
+					t:`wave`,
 				}:simpleTile();
 			},
 		},
 		2:{
-			name:'妖精森林',
-			specialElement:'wood',
+			name:`妖精森林`,
+			specialElement:`wood`,
 			civilization:{
-				name:'圣殿精灵',
+				name:`圣殿精灵`,
 			},
 			genTile(depth){
 				return Math.random()<magic3(depth)?{
 					bg:genColor(0,255,0),
-					color:'black',
-					t:'3',
+					color:`black`,
+					t:`3`,
 				}:simpleTile();
 			},
 		},
 		3:{
-			name:'烈焰山脉',
-			specialElement:'coal',
+			name:`烈焰山脉`,
+			specialElement:`coal`,
 			civilization:{
-				name:'星火人族',
+				name:`星火人族`,
 			},
 			genTile(depth){
 				return Math.random()<magic3(depth)?{
 					bg:genColor(255,255,0),
-					color:'black',
-					t:'4',
+					color:`black`,
+					t:`4`,
 				}:simpleTile();
 			},
 		},
@@ -1455,38 +1451,38 @@
 
 	const ACHIEVEMENTS={
 		firstMo:{
-			name:'初次膜拜',
-			description:'欢迎来到膜拜{Siyuan}！',
+			name:`初次膜拜`,
+			description:`欢迎来到膜拜${SIYUAN}！`,
 			got:(game)=>game.moCount>0,
 		},
 		busyWork:{
-			name:'事务繁忙',
-			description:'拥有 5 座教堂',
+			name:`事务繁忙`,
+			description:`拥有 5 座教堂`,
 			got:(game)=>game.churchs>=5,
 		},
 		tinyWork:{
-			name:'微小的贡献',
-			description:'积累 100 信仰',
+			name:`微小的贡献`,
+			description:`积累 100 信仰`,
 			got:(game)=>game.XY>=100,
 		},
 		doubleOverflow:{
-			name:'爆 double 啦',
-			description:'信徒花费 == <code>Infinity</code>',
+			name:`爆 double 啦`,
+			description:`信徒花费 == <code>Infinity</code>`,
 			got:(game)=>game.moerCost===Infinity,
 		},
 	};
 
 	function truthAbbrDescription(lv){
 		const abbrList=[
-			'dark',
-			'fog',
-			'gugu',
+			`dark`,
+			`fog`,
+			`gugu`,
 		].filter(s=>TRUTH_UPGRADES[lv][s]);
 		if(abbrList.length===0){return '';}
 		return '('+abbrList.map(x=>({
-			dark:`<span title="${translate('真理隐于黑暗，逃避着前来的探索者。')}" class="help">${translate('黑暗')}</span>`,
-			fog:`<span title="${translate('透过迷雾，真理的影子显得模糊。')}" class="help">${translate('迷雾')}</span>`,
-			gugu:`<span title="${translate('鸽子的羽毛落在实验器材上，使实验无法进行。')}" class="help">${translate('鸽羽')}</span>`,
+			dark:`<span title="真理隐于黑暗，逃避着前来的探索者。" class="help">黑暗</span>`,
+			fog:`<span title="透过迷雾，真理的影子显得模糊。" class="help">迷雾</span>`,
+			gugu:`<span title="鸽子的羽毛落在实验器材上，使实验无法进行。}" class="help">鸽羽</span>`,
 		}[x])).join(', ')+')';
 	}
 
@@ -1586,11 +1582,12 @@
 		data.TECH=TECH;
 		data.SP_PROBLEMS=SP_PROBLEMS;
 		data.ACHIEVEMENTS=ACHIEVEMENTS;
+		data.SIYUAN=SIYUAN;
 	}
 	/* global Vue */
 	Vue.component('hint-message',{
 		props:['value','update'],
-		template:'<span class="message" :style="{opacity:op}" v-if="op>0" v-html="value.replace(/</g,\'&lt;\')"></span>',
+		template:`<span class="message" :style="{opacity:op}" v-if="op>0" v-html="value.replace(/</g,\'&lt;\')"></span>`,
 		watch:{
 			update(){
 				if(this.value){
@@ -1615,29 +1612,46 @@
 		},
 	});
 
+	Vue.component('m-doc',{
+		props:['title','value','need'],
+		template:`
+			<div class="m-doc">
+				<h4 v-html="title"></h4>
+				<div v-if="value>=need">
+					<slot></slot>
+				</div>
+				<div v-else-if="value>=need/10">
+					<progress :max="need" :value="value" class="ww"></progress>
+					{{\`\${pn(value)}/\${pn(need)} 次点击\`}}
+				</div>
+			</div>
+		`,
+		methods:{
+			pn,
+		},
+	});
+
 	Vue.component('model-alert',{
 		props:['title','value','update'],
 		template:`
-		<div class="model-alert" v-if="showing">
-			<div class="model-alert-shader" @click="()=>this.showing=false"></div>
-			<div class="model-alert-inner">
-				<strong v-html="title"></strong>
-				<p v-for="v in value.split('\\n')" v-html="v"></p>
+			<div class="model-alert" v-if="showing">
+				<div class="model-alert-shader" @click="()=>this.showing=false"></div>
+				<div class="model-alert-inner">
+					<strong v-html="title"></strong>
+					<p v-for="v in value.split('\\n')" v-html="v"></p>
+				</div>
 			</div>
-		</div>
-	`,
+		`,
 		data(){
 			return {
 				showing:true,
 			};
 		},
-		mounted(){
-		},
 	});
 
 	!function(){
 		new Vue({
-			el:'#app',
+			el:`#app`,
 			template:window.GAME_UI,
 			watch:{
 				light(v){
@@ -1645,7 +1659,6 @@
 				},
 			},
 			methods:{
-				translate,
 				pn,
 				pnr,
 				hasUpgrade,
@@ -1711,7 +1724,7 @@
 								this.spMessageUpdate=Date.now();
 							}
 							else{
-								this.spMessage=this.translate('还有{0}个问题',this.spNeed-this.spCombo);
+								this.spMessage=`还有${this.spNeed-this.spCombo}个问题`;
 								this.sp();
 							}
 						}
@@ -1721,8 +1734,8 @@
 						this.sping=false;
 						this.spMessage='传教失败！';
 						this.spingProblem=[];
-						let acs=chooses.filter(c=>c.ac).map(c=>this.PCtoString(pid,c)).map(this.translate);
-						this.spMessage=translate(`传教失败，正确答案是${new Array(acs.length).fill(0).map((_,i)=>`<strong>{${i}}</strong>`).join('、')}。`,...acs);
+						let acs=chooses.filter(c=>c.ac).map(c=>this.PCtoString(pid,c));
+						this.spMessage=`传教失败，正确答案是${acs.map(x=>`<strong>${x}</strong>`).join('、')}。`;
 					}
 					this.spMessageUpdate=Date.now();
 				},
@@ -1730,7 +1743,7 @@
 					if(!this.sping){
 						this.books-=this.spCost;
 						this.sping=true;
-						this.spMessage=this.translate('人们想要你回答{0}个问题',this.spNeed);
+						this.spMessage=`人们想要你回答${this.spNeed}个问题`;
 						this.spMessageUpdate=Date.now();
 					}
 					let pid;
@@ -1882,15 +1895,15 @@
 						if(this.truthUpgradeStage>=tu.stages){
 							this.truthLevel++;
 							this.resetTruthUpgrade();
-							this.truthUpgradeResult=translate('实验成功');
-							this.truthUpgradeMessage=translate('发现新的真理！');
+							this.truthUpgradeResult='实验成功';
+							this.truthUpgradeMessage='发现新的真理！';
 						}else{
 							this.resetStage();
-							this.truthUpgradeResult=translate('实验成功');
-							this.truthUpgradeMessage=translate('离真理更进一步');
+							this.truthUpgradeResult='实验成功';
+							this.truthUpgradeMessage='离真理更进一步';
 						}
 					}else{
-						this.truthUpgradeResult=translate('实验失败');
+						this.truthUpgradeResult='实验失败';
 						this.truthUpgradeMessage=tu.message(res);
 					}
 					this.updateTruthUpgradeMessage();
@@ -1961,15 +1974,15 @@
 							this.$set(this,name,data[name]);
 						}
 						initData.call(this,this);
-						this.saveInput=translate('导入成功！');
+						this.saveInput='导入成功！';
 						this.solvePTL();
 					}catch(e){
-						this.saveInput=translate('导入失败！');
+						this.saveInput='导入失败！';
 					}
 				},
 				saveExport(){
 					if(this.debugging){
-						this.saveInput=translate('在调试模式下无法导出存档。');
+						this.saveInput='在调试模式下无法导出存档。';
 						return;
 					}
 					let save={};
@@ -2058,21 +2071,21 @@
 
 					let strs=[];
 
-					if(health>ABBR_HIGH){strs.push(translate('巨'));}
-					else if(attack>ABBR_HIGH){strs.push(translate('血'));}
-					else if(speed>ABBR_HIGH){strs.push(translate('灵'));}
+					if(health>ABBR_HIGH){strs.push('巨');}
+					else if(attack>ABBR_HIGH){strs.push('血');}
+					else if(speed>ABBR_HIGH){strs.push('灵');}
 
-					if(attack*speed*health>ABBR_LOW){strs.push(translate('烈焰'));}
-					else if(defendx*defendy*defendz>ABBR_LOW){strs.push(translate('寒冰'));}
+					if(attack*speed*health>ABBR_LOW){strs.push('烈焰');}
+					else if(defendx*defendy*defendz>ABBR_LOW){strs.push('寒冰');}
 
-					else if(defendx>ABBR_HIGH){strs.push(translate('妖'));}
-					else if(defendy>ABBR_HIGH){strs.push(translate('魔'));}
-					else if(defendz>ABBR_HIGH){strs.push(translate('金'));}
+					else if(defendx>ABBR_HIGH){strs.push('妖');}
+					else if(defendy>ABBR_HIGH){strs.push('魔');}
+					else if(defendz>ABBR_HIGH){strs.push('金');}
 
-					if(attack*defendz>ABBR_MID){strs.push(translate('雄狮'));}
-					else if(speed*defendx>ABBR_MID){strs.push(translate('恶狼'));}
-					else if(health*defendy>ABBR_MID){strs.push(translate('青蛙'));}
-					else {strs.push(translate('白狐'));}
+					if(attack*defendz>ABBR_MID){strs.push('雄狮');}
+					else if(speed*defendx>ABBR_MID){strs.push('恶狼');}
+					else if(health*defendy>ABBR_MID){strs.push('青蛙');}
+					else {strs.push('白狐');}
 
 					return strs.map((s,i)=>Number(i)===0?s:s.substr(1)).join('');
 				},
@@ -2350,7 +2363,7 @@
 				},
 				gainAch(ach){
 					if(!this.achievements[ach]){
-						this.popMessages.push(translate('获得新成就：<strong>{0}</strong>！',translate(ACHIEVEMENTS[ach].name)));
+						this.popMessages.push(`获得新成就：<strong>${ACHIEVEMENTS[ach].name}</strong>！`);
 						this.achievements[ach]=true;
 					}
 				},
@@ -2620,13 +2633,13 @@
 							PADDING,
 						},save);
 					}catch(e){
-						window.prompt(translate(`无法读取存档。{!}\n${e}\n请全选复制以下存档文本，以备日后恢复。`),save);
+						window.prompt(`无法读取存档。\n${e}\n请全选复制以下存档文本，以备日后恢复。`,save);
 					}
 				}
 				try{
 					initData.call(this,data);
 				}catch(e){
-					window.prompt(translate(`存档初始化失败。{!}\n${e}`));
+					window.prompt(`存档初始化失败。\n${e}`);
 					data={};
 					localStorage.clear();
 				}
@@ -2664,9 +2677,9 @@
 								return obj;
 							}
 							console.log(
-								'膜拜 %cS%ciyuan%c 要真诚!\n%chttps://orzsiyuan.com/',
-								'color:black;font-weight:bold;',
-								'color:red;font-weight:bold;',
+								`膜拜 %cS%ciyuan%c 要真诚!\n%chttps://orzsiyuan.com/`,
+								`color:black;font-weight:bold;`,
+								`color:red;font-weight:bold;`,
 								'',
 								'color:blue;'
 							);

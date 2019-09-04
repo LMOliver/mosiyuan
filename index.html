@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+		<link rel="shortcut icon" type="image/ico" href="./favicon.ico"/>
+		<title>膜拜 Siyuan</title>
+	</head>
+	<body>
+		<style>
+			#global{
+				position: fixed;
+				left:0;
+				top:0;
+				width: 100%;
+				height: 100%;
+				pointer-events:none;
+				z-index: 1;
+			}
+		</style>
+		<div id="global" class="global"></div>
+		<div id="app"></div>
+		<script>
+			{
+				'use strict';
+				const VERSION='0.6.4.1';
+				const LOCAL=window.location.hostname.includes('localhost');
+				Object.defineProperty(window,'LOCAL',{get:()=>LOCAL});
+				function toAbsLoc(loc){
+					let a=document.createElement('a');
+					a.href=loc;
+					return a.href;
+				}
+				function loadTag(url){
+					let qaq=document.createElement('div');
+					qaq.innerHTML=`Loading <code>${url.split('/').slice(-1)[0]}</code>...`;
+					let element=document.getElementById('global');
+					element.appendChild(qaq);
+					return {
+						get text(){
+							return qaq.innerHTML;
+						},
+						set text(newText){
+							qaq.innerHTML=newText;
+						},
+						done(){
+							qaq.innerHTML+=` <span style="color:green;">Done.</span><br>`;
+						},
+						failed(){
+							qaq.innerHTML+=` <span style="color:red;">Failed.</span><br>`;
+						},
+						remove(){
+							element.removeChild(qaq);
+						},
+					};
+				}
+				function urlScore(url){
+					return url.includes('cdn')^LOCAL?1:0;
+				}
+				async function loadByElement(tagName,defaultAttr,attrName,urls){
+					urls=urls.map(toAbsLoc);
+					urls.sort((x,y)=>urlScore(y)-urlScore(x));
+					for(let url of urls){
+						let element=document.createElement(tagName);
+						for(let name in defaultAttr){
+							element.setAttribute(name,defaultAttr[name]);
+						}
+						element.setAttribute(attrName,url);
+						let handler=loadTag(url);
+						try{
+							await new Promise((resolve,reject)=>{
+								element.addEventListener('load',resolve);
+								element.addEventListener('error',reject);
+								document.body.appendChild(element);
+							});
+							handler.done();
+							return url;
+						}
+						catch(_){
+							handler.failed();
+							document.body.removeChild(element);
+						}
+						first=false;
+					}
+					throw `load failed:\n${urls.join('\n')}`;
+				}
+				function loadScript(urls){
+					return loadByElement('script',{},'src',urls);
+				}
+				function loadCSS(urls){
+					return loadByElement('link',{rel:'stylesheet'},'href',urls);
+				}
+				async function loadText(urls){
+					urls=urls.map(toAbsLoc);
+					urls.sort((x,y)=>urlScore(y)-urlScore(x));
+					for(let url of urls){
+							let handler=loadTag(url);
+							try{
+							let result=(await axios.get(url)).data;
+							handler.done();
+							return result;
+						}
+						catch(e){
+							handler.failed();
+							continue;
+						}
+					}
+					throw `load failed:\n${urls.join('\n')}`;
+				}
+				Promise.all([
+					Promise.all([
+						LOCAL
+							?loadScript(['https://cdn.jsdelivr.net/npm/vue/dist/vue.js','../vue.dev.js'])
+							:loadScript(['https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.min.js','../vue.js']),
+						loadScript(['https://cdn.jsdelivr.net/npm/axios@0.19.0/dist/axios.min.js','../axios.js'])
+						.then(
+							()=>Promise.all([
+								loadText([`https://cdn.jsdelivr.net/gh/LMOliver/mosiyuan@${VERSION}/ui.html`,'./ui.html']).then((result)=>{window.GAME_UI=result;}),
+							])
+						),
+					])
+					.then(()=>loadScript([`https://cdn.jsdelivr.net/gh/LMOliver/mosiyuan@${VERSION}/mosiyuan.min.js`,'./mosiyuan.js'])),
+					loadCSS(['https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css','../normalize.css']),
+					loadCSS(['https://cdn.jsdelivr.net/gh/LMOliver/lmoliver.github.io@master/default.min.css','../default.css']),
+					loadCSS([`https://cdn.jsdelivr.net/gh/LMOliver/mosiyuan@${VERSION}/mosiyuan.min.css`,'./mosiyuan.css']),
+				])
+				.then(()=>{
+					document.getElementById('global').innerHTML='';
+				});
+			}
+		</script>
+	</body>
+</html>
