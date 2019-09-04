@@ -5,8 +5,8 @@
 			<li v-for="msg in popMessages" v-html="msg"></li>
 		</ul>
 	</div>
-	<model-alert v-if="showUpdate" :title="`膜拜${SIYUAN} ${VERSION} {VERSION_NAME}`"
-		:value="`新增成就系统，调整了经书的价格。\n修复了一些 bug。`"></model-alert>
+	<model-alert v-if="showUpdate" :title="`膜拜${SIYUAN} ${VERSION} ${VERSION_NAME}`"
+		:value="VERSION_MESSAGE"></model-alert>
 	<h1 v-html="`膜拜${SIYUAN}`"></h1>
 	<div>
 		<button style="float: right;"
@@ -712,7 +712,7 @@
 		<div class="area">
 			<div class="col">
 				<m-doc :need="1e9" :value="moCount" title="文档 E">
-					<p v-html="`只有大家的领导者才能解读${'&lt;a href=&quot;./documentE.cpp&quot;>'}这篇文档${'&lt;/a>'}。`">
+					<p v-html="`只有大家的领导者才能解读${'&lt;a href=&quot;./documentE.cpp&quot;>'}这份代码${'&lt;/a>'}。`">
 					</p>
 				</m-doc>
 			</div>

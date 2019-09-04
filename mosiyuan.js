@@ -1,7 +1,8 @@
 'use strict';
 {
-	const VERSION='0.6.4.1';
+	const VERSION='0.6.4.2';
 	const VERSION_NAME='';
+	const VERSION_MESSAGE=`调整了界面，增加了一个新成就。`;
 	const {encode,decode}=(()=>{
 		const C=126-33+1;
 		const ENCODE_P={33:125,34:84,35:44,36:102,37:57,38:68,39:50,40:69,41:59,42:83,43:100,44:72,45:116,46:35,47:108,48:89,49:92,50:51,51:65,52:73,53:124,54:119,55:90,56:45,57:47,58:75,59:60,60:95,61:96,62:91,63:63,64:111,65:46,66:101,67:36,68:120,69:104,70:97,71:42,72:55,73:99,74:113,75:53,76:112,77:122,78:114,79:106,80:33,81:79,82:74,83:121,84:61,85:85,86:76,87:49,88:93,89:82,90:40,91:117,92:105,93:62,94:94,95:39,96:78,97:86,98:109,99:41,100:66,101:70,102:48,103:58,104:88,105:103,106:64,107:115,108:80,109:81,110:43,111:123,112:67,113:56,114:107,115:110,116:52,117:118,118:77,119:126,120:87,121:98,122:34,123:71,124:38,125:37,126:54,};
@@ -860,7 +861,7 @@
 		3:{
 			antiGugu:{
 				name:`驱鸽仪`,
-				description:`有人曾说这是真理 III 中的第一个研究。现在看来他说得对。`,
+				description:`有人曾说这将是真理 III 中的第一个研究。现在看来他说得对。`,
 				require:[['windFazhen',2]],
 				cost(lv){
 					return [
@@ -1454,6 +1455,9 @@
 			name:`初次膜拜`,
 			description:`欢迎来到膜拜${SIYUAN}！`,
 			got:(game)=>game.moCount>0,
+			price:{
+				autoClick:0.1,
+			},
 		},
 		busyWork:{
 			name:`事务繁忙`,
@@ -1469,6 +1473,20 @@
 			name:`爆 double 啦`,
 			description:`信徒花费 == <code>Infinity</code>`,
 			got:(game)=>game.moerCost===Infinity,
+		},
+		sp3:{
+			name:`稳定发挥`,
+			description:`达到传教 III`,
+			got:(game)=>game.spLevel>=3,
+		},
+	};
+
+	const PRICES={
+		autoClick:{
+			name:'自动点击',
+			format:'VALUE点击/秒',
+			reduce:(a,b)=>a+b,
+			init:0,
 		},
 	};
 
@@ -1574,6 +1592,7 @@
 		data.DB_PROI=DB_PROI;
 		data.VERSION=VERSION;
 		data.VERSION_NAME=VERSION_NAME;
+		data.VERSION_MESSAGE=VERSION_MESSAGE;
 		data.ENEMY_ABBR=ENEMY_ABBR;
 		data.BASIC_ELEMENTS=BASIC_ELEMENTS;
 		data.languages=window.languages;
@@ -1616,11 +1635,12 @@
 		props:['title','value','need'],
 		template:`
 			<div class="m-doc">
-				<h4 v-html="title"></h4>
 				<div v-if="value>=need">
+					<h4 v-html="title"></h4>
 					<slot></slot>
 				</div>
 				<div v-else-if="value>=need/10">
+					<h4 v-html="title"></h4>
 					<progress :max="need" :value="value" class="ww"></progress>
 					{{\`\${pn(value)}/\${pn(need)} 次点击\`}}
 				</div>

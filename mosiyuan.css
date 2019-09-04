@@ -132,3 +132,11 @@ button{
 	padding: 4px 8px;
 	z-index: 2;
 }
+
+p{
+	margin:0;
+}
+h4,h5,h6,blockquote{
+	margin-block-start: 8px;
+	margin-block-end: 8px;
+}
